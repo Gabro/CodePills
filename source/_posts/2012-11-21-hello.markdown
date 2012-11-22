@@ -1,0 +1,14 @@
+---
+layout: post
+title: "Hello World!"
+date: 2012-11-21 17:15
+comments: true
+categories: 
+---
+Hello World!
+
+{% codeblock The nicest method ever ruby %}
+def nice_method
+	puts "Hi"
+end
+{% endcodeblock %}
