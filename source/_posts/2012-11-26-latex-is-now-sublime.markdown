@@ -4,7 +4,7 @@ title: "LaTeX is now Sublime"
 date: 2012-11-26 23:23
 comments: true
 categories: latex sublime-text
-published: false <!-- DRAFT -->
+published: false
 ---
 Hi everyone!
 I can safely guess that many of you use or have used LaTeX, the beautiful markup language by Leslie Lamport.
