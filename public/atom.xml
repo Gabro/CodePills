@@ -4,39 +4,37 @@
   <title><![CDATA[My Octopress Blog]]></title>
   <link href="http://yoursite.com/atom.xml" rel="self"/>
   <link href="http://yoursite.com/"/>
-  <updated>2012-11-21T20:06:40-06:00</updated>
+  <updated>2012-11-26T21:53:42-05:00</updated>
   <id>http://yoursite.com/</id>
   <author>
-    <name><![CDATA[Your Name]]></name>
+    <name><![CDATA[Gabriele Petronella]]></name>
     
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
   
   <entry>
-    <title type="html"><![CDATA[Luca saluta luca]]></title>
-    <link href="http://yoursite.com/blog/2012/11/21/luca-saluta-luca/"/>
-    <updated>2012-11-21T19:56:00-06:00</updated>
-    <id>http://yoursite.com/blog/2012/11/21/luca-saluta-luca</id>
-    <content type="html"><![CDATA[
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Hello World!]]></title>
+    <title type="html"><![CDATA[Hello, World!]]></title>
     <link href="http://yoursite.com/blog/2012/11/21/hello/"/>
-    <updated>2012-11-21T17:15:00-06:00</updated>
+    <updated>2012-11-21T17:15:00-05:00</updated>
     <id>http://yoursite.com/blog/2012/11/21/hello</id>
-    <content type="html"><![CDATA[<p>Hello World!</p>
+    <content type="html"><![CDATA[<p><span class='pullquote-right' data-pullquote='This blog is meant as a resource where to find solutions to real life problems, mostly related to the programming world.'></p>
 
-<figure class='code'><figcaption><span>The nicest method ever ruby </span></figcaption>
-<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>def nice_method
-</span><span class='line'>  puts "Hi"
-</span><span class='line'>end</span></code></pre></td></tr></table></div></figure>
+<p>First post on this blog, I don&#8217;t even know if anybody will read this at all. Anyway, who cares! This blog is meant as a resource where to find solutions to real life problems, mostly related to the programming world. (yeah, exactly, like thousands of other blogs out there! One more shouldn&#8217;t harm too much, after all&#8230;)
+Before going on I&#8217;ve to warn you reader: this <strong>is</strong> a geek-nerd-whatever blog, so if you are reading this and you don&#8217;t even know what a programming language is &#8211; why the heck are you here in the first place?! &#8211; I apologize but I have to suggest to spend your spare time somewhere else: <a href="http://youtube.com">youtube.com</a>, <a href="http://facebook.com">facebook.com</a>, <a href="http://youporn.com">youporn.com</a> are good candidates).</p>
 
+<!-- more -->
+
+
+<p>Back on topic, this blog will contain reports of personal experiences in the programming world, along with the solution found (hopefully!).
+The main purpose is to save hours of time to those who might encounter the same issue and make the world a better place (God, I should apply for Miss America!), or at least a more efficient.</p>
+
+<p>Since I really enjoyed setting up this blog itself, I&#8217;ll probably start with a brief guide on how to achieve it.</p>
+
+<p>For those who are still here reading, stay tuned! For the others, well, I&#8217;ve clearly nothing to tell you.</p>
+
+<p>G.
+</span></p>
 ]]></content>
   </entry>
   

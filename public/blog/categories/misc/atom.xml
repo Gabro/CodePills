@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: misc | My Octopress Blog]]></title>
+  <link href="http://yoursite.com/blog/categories/misc/atom.xml" rel="self"/>
+  <link href="http://yoursite.com/"/>
+  <updated>2012-11-26T21:53:42-05:00</updated>
+  <id>http://yoursite.com/</id>
+  <author>
+    <name><![CDATA[Gabriele Petronella]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Hello, World!]]></title>
+    <link href="http://yoursite.com/blog/2012/11/21/hello/"/>
+    <updated>2012-11-21T17:15:00-05:00</updated>
+    <id>http://yoursite.com/blog/2012/11/21/hello</id>
+    <content type="html"><![CDATA[<p><span class='pullquote-right' data-pullquote='This blog is meant as a resource where to find solutions to real life problems, mostly related to the programming world.'></p>
+
+<p>First post on this blog, I don't even know if anybody will read this at all. Anyway, who cares! This blog is meant as a resource where to find solutions to real life problems, mostly related to the programming world. (yeah, exactly, like thousands of other blogs out there! One more shouldn't harm too much, after all...)
+Before going on I've to warn you reader: this <strong>is</strong> a geek-nerd-whatever blog, so if you are reading this and you don't even know what a programming language is -- why the heck are you here in the first place?! -- I apologize but I have to suggest to spend your spare time somewhere else: <a href="http://youtube.com">youtube.com</a>, <a href="http://facebook.com">facebook.com</a>, <a href="http://youporn.com">youporn.com</a> are good candidates).</p>
+
+<!-- more -->
+
+
+<p>Back on topic, this blog will contain reports of personal experiences in the programming world, along with the solution found (hopefully!).
+The main purpose is to save hours of time to those who might encounter the same issue and make the world a better place (God, I should apply for Miss America!), or at least a more efficient.</p>
+
+<p>Since I really enjoyed setting up this blog itself, I'll probably start with a brief guide on how to achieve it.</p>
+
+<p>For those who are still here reading, stay tuned! For the others, well, I've clearly nothing to tell you.</p>
+
+<p>G.
+</span></p>
+]]></content>
+  </entry>
+  
+</feed>
