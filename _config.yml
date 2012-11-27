@@ -2,12 +2,12 @@
 #      Main Configs       #
 # ----------------------- #
 
-url: http://yoursite.com
-title: My Octopress Blog
-subtitle: a very long and fancy subtitle just for the fun of it
+url: http://codepills.net
+title: Code Pills
+subtitle: code pills from real life experience
 author: Gabriele Petronella
 simple_search: http://google.com/search
-description: a fancy description
+description: 
 
 # Default date format is "ordinal" (resulting in "July 22nd 2007")
 # You can customize the format as defined in

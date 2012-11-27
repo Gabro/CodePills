@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><![CDATA[My Octopress Blog]]></title>
-  <link href="http://yoursite.com/atom.xml" rel="self"/>
-  <link href="http://yoursite.com/"/>
-  <updated>2012-11-26T21:53:42-05:00</updated>
-  <id>http://yoursite.com/</id>
+  <title><![CDATA[Code Pills]]></title>
+  <link href="http://codepills.net/atom.xml" rel="self"/>
+  <link href="http://codepills.net/"/>
+  <updated>2012-11-26T22:04:49-05:00</updated>
+  <id>http://codepills.net/</id>
   <author>
     <name><![CDATA[Gabriele Petronella]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Hello, World!]]></title>
-    <link href="http://yoursite.com/blog/2012/11/21/hello/"/>
+    <link href="http://codepills.net/blog/2012/11/21/hello/"/>
     <updated>2012-11-21T17:15:00-05:00</updated>
-    <id>http://yoursite.com/blog/2012/11/21/hello</id>
+    <id>http://codepills.net/blog/2012/11/21/hello</id>
     <content type="html"><![CDATA[<p><span class='pullquote-right' data-pullquote='This blog is meant as a resource where to find solutions to real life problems, mostly related to the programming world.'></p>
 
 <p>First post on this blog, I don&#8217;t even know if anybody will read this at all. Anyway, who cares! This blog is meant as a resource where to find solutions to real life problems, mostly related to the programming world. (yeah, exactly, like thousands of other blogs out there! One more shouldn&#8217;t harm too much, after all&#8230;)
