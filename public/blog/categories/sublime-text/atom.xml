@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: sublime-text | Code Pills]]></title>
+  <link href="http://codepills.net/blog/categories/sublime-text/atom.xml" rel="self"/>
+  <link href="http://codepills.net/"/>
+  <updated>2012-11-27T01:05:52-05:00</updated>
+  <id>http://codepills.net/</id>
+  <author>
+    <name><![CDATA[Gabriele Petronella]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[LaTeX is now Sublime]]></title>
+    <link href="http://codepills.net/blog/2012/11/26/latex-is-now-sublime/"/>
+    <updated>2012-11-26T23:23:00-05:00</updated>
+    <id>http://codepills.net/blog/2012/11/26/latex-is-now-sublime</id>
+    <content type="html"><![CDATA[<p>Hi everyone!
+I can safely guess that many of you use or have used LaTeX, the beautiful markup language by Leslie Lamport.
+If you don't and you have some aesthetic taste I suggest you to <a href="http://en.wikibooks.org/wiki/LaTeX/Introduction">check it out</a> and stop producing ugly Word documents.
+If instead you know what I'm talking about, I'd like to share with you all my LaTeX configuration, which makes use of the awesome editor <strong>Sublime Text 2</strong> and its plug-in <strong>LaTeXTools</strong>.</p>
+
+<!-- more -->
+
+
+<h1>Tools Setup</h1>
+
+<h2>LaTeX</h2>
+
+<h2>Sublime Text 2</h2>
+
+<p><a href="http://www.sublimetext.com/">Sublime Text</a> is an amazing editor. Period.</p>
+
+<p>I won't go through the several reasons why I love using it, since it would be beyond the scope of this post, but if you are interested you can check out articles such <a href="http://1p1e1.tumblr.com/post/14262857223/9-reasons-you-must-install-sublime-text-2-code-like-a">this one</a> or <a href="http://steverandytantra.com/thoughts/three-months-with-sublime-text-2">this other one</a> which are perfectly aligned with my opinion.</p>
+
+<p>The first step is the install this cool editor (which comes with a free unlimited evaluation period, meaning that you'll have to discard an alert every once in a while), a trivial task that can be accomplished <a href="http://www.sublimetext.com/2">downloading the provided installer</a>.</p>
+
+<h2>Sublime Package Control</h2>
+
+<p>One of the coolest feature of Sublime Text is its package manager, which has to be installed separately by executing the following command into the Sublime Text shell, accessible by the shortcut <code>CTRL+`</code>.</p>
+
+<p><div class='bogus-wrapper'><notextile><figure class='code'><figcaption><span>Sublime Package Control install script</span><a href='http://wbond.net/sublime_packages/package_control/installation'>source </a></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>import urllib2,os; pf='Package Control.sublime-package'; ipp=sublime.installed_packages_path(); os.makedirs(ipp) if not os.path.exists(ipp) else None; urllib2.install_opener(urllib2.build_opener(urllib2.ProxyHandler())); open(os.path.join(ipp,pf),'wb').write(urllib2.urlopen('http://sublime.wbond.net/'+pf.replace(' ','%20')).read()); print 'Please restart Sublime Text to finish installation'</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<h2>LaTeXTools</h2>
+
+<p>Now that we have the package manager installed it is now incredibly easy to extend the Sublime Text functionalities in a matter of seconds.</p>
+
+<p><img class="alignright" src="http://f.cl.ly/items/3m0v2y44122D2M300k0v/install-package.png" width="600"></p>
+
+<p>Just open the command palette (<em>Tools -> Command Palette...</em> or <code>Cmd+Shift+P</code>) and select <em>Package Control: Install Package</em> (tip: start typing the name of the command and the results will be filtered in real time). Press enter, wait a few seconds for the package list to load, select LaTeXTools then press enter.
+Wait for the installation to complete (status messages will appear at the bottom of the Sublime Text window) and there you go, easier than ever.</p>
+
+<h2>Skim</h2>
+
+<h1>Basic Usage</h1>
+]]></content>
+  </entry>
+  
+</feed>
