@@ -4,7 +4,7 @@
   <title><![CDATA[Code Pills]]></title>
   <link href="http://codepills.net/atom.xml" rel="self"/>
   <link href="http://codepills.net/"/>
-  <updated>2012-12-01T15:07:02-06:00</updated>
+  <updated>2012-12-01T15:09:39-06:00</updated>
   <id>http://codepills.net/</id>
   <author>
     <name><![CDATA[Gabriele Petronella]]></name>
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Hello, World!]]></title>
-    <link href="http://codepills.net/blog/2012/11/21/hello/"/>
+    <link href="http://codepills.net/blog/2012/11/21/hello-world/"/>
     <updated>2012-11-21T17:15:00-06:00</updated>
-    <id>http://codepills.net/blog/2012/11/21/hello</id>
+    <id>http://codepills.net/blog/2012/11/21/hello-world</id>
     <content type="html"><![CDATA[<p><span class='pullquote-right' data-pullquote='This blog is meant as a resource where to find solutions to real life problems, mostly related to the programming world.'></p>
 
 <p>First post on this blog, I don&#8217;t even know if anybody will read this at all. Anyway, who cares! This blog is meant as a resource where to find solutions to real life problems, mostly related to the programming world. (yeah, exactly, like thousands of other blogs out there! One more shouldn&#8217;t harm too much, after all&#8230;)
