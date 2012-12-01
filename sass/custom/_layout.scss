@@ -1,21 +1,28 @@
-// Here you can easily change your sites's layout.
-// To give it a try, uncomment some of the lines below, make changes, rebuild your blog, and see how it works.
+article.post h2, article.post p {
+  max-width: 90% !important;
+}
 
-//$header-font-size: 1em;
-//$header-padding-top: 1.5em;
-//$header-padding-bottom: 1.5em;
+article.post figure {
+  max-width: 90% !important;
+}
 
-//$max-width: 1350px;
-//$indented-lists: true;
+div.sharing-box {
+  width: 90% !important;
+  position: relative !important;
+  left: 0px !important;
+  top: 0px !important;
+  vertical-align: middle !important;
+}
 
-// Padding used for layout margins
-//$pad-min: 18px;
-//$pad-narrow: 25px;
-//$pad-medium: 35px;
-//$pad-wide: 55px;
+div.fb-like.fb_edge_widget_with_comment.fb_iframe_widget {
+	vertical-align: middle !important;
+	padding-top: 4px !important;
+}
 
-// Sidebar widths used in media queries
-//$sidebar-width-medium: 240px;
-//$sidebar-pad-medium: 15px;
-//$sidebar-pad-wide: 20px;
-//$sidebar-width-wide: 300px;
+iframe.twitter-share-button.twitter-count-horizontal {
+	vertical-align: middle !important;
+}
+
+#disqus_thread {
+	max-width: 90% !important;
+}
