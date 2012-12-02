@@ -57,6 +57,8 @@ Let's create a new LaTeX document called `sublime.tex`.
 
 {% include_code A test document latex/sublime.tex %}
 
+{% gist 4186089 %}
+
 Now let's compile it using the shortcut `` Cmd+B `` (or by selecting *Tools -> Build*)
 
 If everything went as expected, you will obtain a PDF document that will be automatically opened with Skim.
