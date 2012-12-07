@@ -4,7 +4,7 @@
   <title><![CDATA[Category: sublime-text | Code Pills]]></title>
   <link href="http://codepills.net/blog/categories/sublime-text/atom.xml" rel="self"/>
   <link href="http://codepills.net/"/>
-  <updated>2012-12-06T22:53:37-06:00</updated>
+  <updated>2012-12-06T23:08:17-06:00</updated>
   <id>http://codepills.net/</id>
   <author>
     <name><![CDATA[Gabriele Petronella]]></name>
@@ -74,8 +74,6 @@ Wait for the installation to complete (status messages will appear at the bottom
 <h2>Our first document</h2>
 
 <p>Let's create a new LaTeX document called <code>sublime.tex</code>.</p>
-
-<p>File /Users/gabro/Projects/codepills.net/octopress/source/downloads/code/latex/sublime.tex could not be found</p>
 
 <p><div><script src='https://gist.github.com/4186089.js?file='></script>
 <noscript><pre><code>\documentclass{article}

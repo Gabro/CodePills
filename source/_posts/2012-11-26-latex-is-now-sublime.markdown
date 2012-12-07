@@ -55,8 +55,6 @@ Great! In a few minutes and without any particular effort we have a nice and pro
 ## Our first document
 Let's create a new LaTeX document called `sublime.tex`.
 
-{% include_code A test document latex/sublime.tex %}
-
 {% gist 4186089 %}
 
 Now let's compile it using the shortcut `` Cmd+B `` (or by selecting *Tools -> Build*)
