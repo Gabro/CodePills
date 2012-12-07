@@ -4,7 +4,7 @@
   <title><![CDATA[Category: latex | Code Pills]]></title>
   <link href="http://codepills.net/blog/categories/latex/atom.xml" rel="self"/>
   <link href="http://codepills.net/"/>
-  <updated>2012-12-06T23:08:17-06:00</updated>
+  <updated>2012-12-07T13:46:53-06:00</updated>
   <id>http://codepills.net/</id>
   <author>
     <name><![CDATA[Gabriele Petronella]]></name>
@@ -12,6 +12,84 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[The root of all Tex]]></title>
+    <link href="http://codepills.net/blog/2012/12/07/the-root-of-all-tex/"/>
+    <updated>2012-12-07T13:14:00-06:00</updated>
+    <id>http://codepills.net/blog/2012/12/07/the-root-of-all-tex</id>
+    <content type="html"><![CDATA[<p>Hi everyone!</p>
+
+<p>Recently <a href="/blog/2012/12/06/latex-is-now-sublime/">we talked about</a> how to set-up a delightful working environment for LaTeX using Sublime Text 2.</p>
+
+<p>Today I want to share with you a trick that will help you while dealing with multi-part LaTeX documents using the <code>\input</code> or the <code>\include</code> commands.</p>
+
+<!-- more -->
+
+
+<h1>The scenario</h1>
+
+<p>Suppose you're working on a large and structured LaTeX document, maybe a paper for an upcoming conference, maybe a thesis or similar stuff.
+Being a tidy person you correctly decided to split your document in several parts, each one in a separate <code>.tex</code> file.
+So you end up having a <code>main.tex</code> document that looks like this</p>
+
+<p><div><script src='https://gist.github.com/4235760.js?file='></script>
+<noscript><pre><code>\documentclass{article}
+
+\title{A long document}
+\author{Gabriele Petronella}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\input{abstract.tex}
+\input{related-work.tex}
+\input{experiment.tex}
+\input{results.tex}
+\input{conclusions.tex}
+
+\end{document}</code></pre></noscript></div>
+</p>
+
+<p>(<strong>note</strong>: I used the <code>\input</code> command in the above example. There's a difference between <code>\input</code> and <code>\include</code> which is well explained <a href="http://tex.stackexchange.com/questions/246/when-should-i-use-input-vs-include">here</a>).</p>
+
+<h1>The problem</h1>
+
+<p>The structure looks great but let's take a look at the annoying problem we have here.</p>
+
+<p>Suppose you're working on the <code>abstract.tex</code> file and you want to compile it to see how the document looks like. As we learned in the previous pill we press <code>Cmd+B</code> (or <code>Ctrl+B</code> on Windows and Linux) in our beautiful Sublime Text editor and we are done, right?</p>
+
+<p>Unfortunately that's not the case and we'll get an error looking more or less like
+<code>
+./abstract.tex:2: LaTeX Error: Missing \begin{document}.
+</code></p>
+
+<p>The LaTeX compiler cannot figure out by itself that the current document is included in another one (in our case <code>main.tex</code>) so it complains about the missing <code>\begin{document}</code> command.
+If you want to compile your document you should go back to the <code>main.tex</code> file and do it from there.</p>
+
+<p>Kind of annoying, isn't it?</p>
+
+<h1>The solution</h1>
+
+<p>It turns out that there's a very simple and elegant way to help the compiler to figure out that a file is a part of a larger document.</p>
+
+<p>Simply add this line at the top of <code>abstract.tex</code>:</p>
+
+<p><code>
+% !TEX root = main.tex
+</code></p>
+
+<p>This will tell the compiler that the root of our document is called <code>main.tex</code> and it will compile that one even when we are running the command while working on <code>abstract.tex</code>.</p>
+
+<p>Productivity for the win!</p>
+
+<p>Stay tuned for more pills</p>
+
+<p>Bye</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[LaTeX is now Sublime]]></title>

@@ -5,7 +5,7 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>Code Pills</title>
+  <title>The root of all Tex - Code Pills</title>
   <meta name="author" content="Gabriele Petronella">
 
   
@@ -18,7 +18,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://codepills.net/">
+  <link rel="canonical" href="http://codepills.net/blog/2012/12/07/the-root-of-all-tex/">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <script src="/javascripts/modernizr-2.0.js"></script>
   <script src="/javascripts/ender.js"></script>
@@ -93,18 +93,11 @@
 
   </header>
   <section id="main">
-      
-  
-  
     <article class="post">
-      
+  
   <header>
     
-      <h2 class="entry-title">
-        
-        <a href="/blog/2012/12/07/the-root-of-all-tex/">The Root of All Tex</a>
-        
-      </h2>
+      <h2 class="entry-title">The Root of All Tex</h2>
     
     
       <p class="meta">
@@ -127,121 +120,98 @@
   </header>
 
 
-  <p>Hi everyone!</p>
+<p>Hi everyone!</p>
 
 <p>Recently <a href="/blog/2012/12/06/latex-is-now-sublime/">we talked about</a> how to set-up a delightful working environment for LaTeX using Sublime Text 2.</p>
 
 <p>Today I want to share with you a trick that will help you while dealing with multi-part LaTeX documents using the <code>\input</code> or the <code>\include</code> commands.</p>
 
+<!-- more -->
 
+
+<h1>The scenario</h1>
+
+<p>Suppose you&#8217;re working on a large and structured LaTeX document, maybe a paper for an upcoming conference, maybe a thesis or similar stuff.
+Being a tidy person you correctly decided to split your document in several parts, each one in a separate <code>.tex</code> file.
+So you end up having a <code>main.tex</code> document that looks like this</p>
+
+<div><script src='https://gist.github.com/4235760.js?file='></script>
+<noscript><pre><code>\documentclass{article}
+
+\title{A long document}
+\author{Gabriele Petronella}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\input{abstract.tex}
+\input{related-work.tex}
+\input{experiment.tex}
+\input{results.tex}
+\input{conclusions.tex}
+
+\end{document}</code></pre></noscript></div>
+
+
+<p>(<strong>note</strong>: I used the <code>\input</code> command in the above example. There&#8217;s a difference between <code>\input</code> and <code>\include</code> which is well explained <a href="http://tex.stackexchange.com/questions/246/when-should-i-use-input-vs-include">here</a>).</p>
+
+<h1>The problem</h1>
+
+<p>The structure looks great but let&#8217;s take a look at the annoying problem we have here.</p>
+
+<p>Suppose you&#8217;re working on the <code>abstract.tex</code> file and you want to compile it to see how the document looks like. As we learned in the previous pill we press <code>Cmd+B</code> (or <code>Ctrl+B</code> on Windows and Linux) in our beautiful Sublime Text editor and we are done, right?</p>
+
+<p>Unfortunately that&#8217;s not the case and we&#8217;ll get an error looking more or less like</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>./abstract.tex:2: LaTeX Error: Missing \begin{document}.</span></code></pre></td></tr></table></div></figure>
+
+
+<p>The LaTeX compiler cannot figure out by itself that the current document is included in another one (in our case <code>main.tex</code>) so it complains about the missing <code>\begin{document}</code> command.
+If you want to compile your document you should go back to the <code>main.tex</code> file and do it from there.</p>
+
+<p>Kind of annoying, isn&#8217;t it?</p>
+
+<h1>The solution</h1>
+
+<p>It turns out that there&#8217;s a very simple and elegant way to help the compiler to figure out that a file is a part of a larger document.</p>
+
+<p>Simply add this line at the top of <code>abstract.tex</code>:</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>% !TEX root = main.tex</span></code></pre></td></tr></table></div></figure>
+
+
+<p>This will tell the compiler that the root of our document is called <code>main.tex</code> and it will compile that one even when we are running the command while working on <code>abstract.tex</code>.</p>
+
+<p>Productivity for the win!</p>
+
+<p>Stay tuned for more pills</p>
+
+<p>Bye</p>
+
+
+
+  <div class="sharing-box">
+  
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://codepills.net/blog/2012/12/07/the-root-of-all-tex/" data-via="Gabro27" data-counturl="http://codepills.net/blog/2012/12/07/the-root-of-all-tex/" data-size="large">Tweet</a>
   
   
-    <footer>
-      <a rel="full-article" href="/blog/2012/12/07/the-root-of-all-tex/">Read on &rarr;</a>
-    </footer>
   
-
-
-    </article>
+  <div class="fb-like" data-send="true" data-width="450" data-show-faces="false"></div>
   
-  
-    <article class="post">
-      
-  <header>
-    
-      <h2 class="entry-title">
-        
-        <a href="/blog/2012/12/06/latex-is-now-sublime/">LaTeX Is Now Sublime</a>
-        
-      </h2>
-    
-    
-      <p class="meta">
-        
+</div>
 
+</article>
 
+  <section class="comments">
+    <h2>Comments</h2>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+  </section>
 
-
-
-
-
-
-  
-
-
-<time datetime="2012-12-06T22:53:00-06:00" pubdate data-updated="true">Dec 6<span>th</span>, 2012</time>
-        
-      </p>
-    
-  </header>
-
-
-  <p>Hi everyone!</p>
-
-<p>I can safely guess that many of you use or have used LaTeX, the beautiful markup language by Leslie Lamport.</p>
-
-<p>If you don&#8217;t and you have some aesthetic taste I suggest you to <a href="http://en.wikibooks.org/wiki/LaTeX/Introduction">check it out</a> and stop producing ugly Word documents.
-If instead you know what I&#8217;m talking about, I&#8217;d like to share with you all my LaTeX configuration, which makes use of the awesome editor <strong>Sublime Text 2</strong> and its plug-in <strong>LaTeXTools</strong>.</p>
-
-
-  
-  
-    <footer>
-      <a rel="full-article" href="/blog/2012/12/06/latex-is-now-sublime/">Read on &rarr;</a>
-    </footer>
-  
-
-
-    </article>
-  
-  
-    <article class="post">
-      
-  <header>
-    
-      <h2 class="entry-title">
-        
-        <a href="/blog/2012/11/21/hello-world/">Hello, World!</a>
-        
-      </h2>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2012-11-21T17:15:00-06:00" pubdate data-updated="true">Nov 21<span>st</span>, 2012</time>
-        
-      </p>
-    
-  </header>
-
-
-  <p><span class='pullquote-right' data-pullquote='This blog is meant as a resource where to find solutions to real life problems, mostly related to the programming world.'></p>
-
-<p>First post on this blog, I don&#8217;t even know if anybody will read this at all. Anyway, who cares! This blog is meant as a resource where to find solutions to real life problems, mostly related to the programming world. (yeah, exactly, like thousands of other blogs out there! One more shouldn&#8217;t harm too much, after all&#8230;)
-Before going on I&#8217;ve to warn you reader: this <strong>is</strong> a geek-nerd-whatever blog, so if you are reading this and you don&#8217;t even know what a programming language is &#8211; why the heck are you here in the first place?! &#8211; I apologize but I have to suggest to spend your spare time somewhere else: <a href="http://youtube.com">youtube.com</a>, <a href="http://facebook.com">facebook.com</a>, <a href="http://youporn.com">youporn.com</a> are good candidates).</p>
-
-
-  
-  
-    <footer>
-      <a rel="full-article" href="/blog/2012/11/21/hello-world/">Read on &rarr;</a>
-    </footer>
-  
-
-
-    </article>
-  
 
     <nav role="navigation" id="pagination">
 
@@ -255,7 +225,10 @@ Before going on I&#8217;ve to warn you reader: this <strong>is</strong> a geek-n
       var disqus_shortname = 'codepills';
       
         
-        var disqus_script = 'count.js';
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://codepills.net/blog/2012/12/07/the-root-of-all-tex/';
+        var disqus_url = 'http://codepills.net/blog/2012/12/07/the-root-of-all-tex/';
+        var disqus_script = 'embed.js';
       
     (function () {
       var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
