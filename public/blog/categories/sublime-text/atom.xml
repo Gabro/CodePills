@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: sublime-text | Code Pills]]></title>
+  <link href="http://codepills.net/blog/categories/sublime-text/atom.xml" rel="self"/>
+  <link href="http://codepills.net/"/>
+  <updated>2012-12-06T22:51:51-06:00</updated>
+  <id>http://codepills.net/</id>
+  <author>
+    <name><![CDATA[Gabriele Petronella]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[LaTeX is now Sublime]]></title>
+    <link href="http://codepills.net/blog/2012/11/26/latex-is-now-sublime/"/>
+    <updated>2012-11-26T23:23:00-06:00</updated>
+    <id>http://codepills.net/blog/2012/11/26/latex-is-now-sublime</id>
+    <content type="html"><![CDATA[<p>Hi everyone!</p>
+
+<p>I can safely guess that many of you use or have used LaTeX, the beautiful markup language by Leslie Lamport.</p>
+
+<p>If you don't and you have some aesthetic taste I suggest you to <a href="http://en.wikibooks.org/wiki/LaTeX/Introduction">check it out</a> and stop producing ugly Word documents.
+If instead you know what I'm talking about, I'd like to share with you all my LaTeX configuration, which makes use of the awesome editor <strong>Sublime Text 2</strong> and its plug-in <strong>LaTeXTools</strong>.</p>
+
+<!-- more -->
+
+
+<p><strong>Disclaimer</strong>: the following article refers to an <strong>OSX</strong> implementation. The information provided usually applies to Windows and Linux systems too, even if minor discrepancies may occur, such as for the LaTeX bundle and the Sublime Text shortcuts.</p>
+
+<h1>Tools Setup</h1>
+
+<h2>LaTeX</h2>
+
+<p>Installing LaTeX on OSX is pretty straighforward: all it takes is to visit the <a href="http://www.tug.org/mactex/">MacTeX project page</a> and download the installer.
+The installation comes with a extensive collection of LaTeX packages along with many useful tools, such as TeXLive, a package manager, and BibDesk, a BibTeX guy.</p>
+
+<h2>Sublime Text 2</h2>
+
+<p><a href="http://www.sublimetext.com/">Sublime Text</a> is an amazing editor. Period.</p>
+
+<p>I won't go through the several reasons why I love using it, since it would be beyond the scope of this post, but if you are interested you can check out articles such <a href="http://1p1e1.tumblr.com/post/14262857223/9-reasons-you-must-install-sublime-text-2-code-like-a">this one</a> or <a href="http://steverandytantra.com/thoughts/three-months-with-sublime-text-2">this other one</a> which are perfectly aligned with my opinion.</p>
+
+<p>The first step is the install this cool editor (which comes with a free unlimited evaluation period, meaning that you'll have to discard an alert every once in a while), a trivial task that can be accomplished <a href="http://www.sublimetext.com/2">downloading the provided installer</a>.</p>
+
+<h2>Sublime Package Control</h2>
+
+<p>One of the coolest feature of Sublime Text is its package manager, which has to be installed separately by executing the following command into the Sublime Text shell, accessible by the shortcut <code>CTRL+`</code>.</p>
+
+<p><div class='bogus-wrapper'><notextile><figure class='code'><figcaption><span>Sublime Package Control install script</span><a href='http://wbond.net/sublime_packages/package_control/installation'>source </a></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>import urllib2,os; pf='Package Control.sublime-package'; ipp=sublime.installed_packages_path(); os.makedirs(ipp) if not os.path.exists(ipp) else None; urllib2.install_opener(urllib2.build_opener(urllib2.ProxyHandler())); open(os.path.join(ipp,pf),'wb').write(urllib2.urlopen('http://sublime.wbond.net/'+pf.replace(' ','%20')).read()); print 'Please restart Sublime Text to finish installation'</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<h2>LaTeXTools</h2>
+
+<p>Now that we have the package manager installed it is now incredibly easy to extend the Sublime Text functionalities in a matter of seconds.</p>
+
+<p><img class="alignright" src="http://f.cl.ly/items/3m0v2y44122D2M300k0v/install-package.png" width="600"></p>
+
+<p>Just open the command palette (<em>Tools -> Command Palette...</em> or <code>Cmd+Shift+P</code>) and select <em>Package Control: Install Package</em> (tip: start typing the name of the command and the results will be filtered in real time). Press enter, wait a few seconds for the package list to load, select LaTeXTools then press enter.
+Wait for the installation to complete (status messages will appear at the bottom of the Sublime Text window) and there you go, quick and easy.</p>
+
+<h2>Skim</h2>
+
+<p><a href="http://skim-app.sourceforge.net/">Skim</a> is a nice PDF viewer for OSX. I've never had nothing to complain about using the default Preview viewer, but Skim is definitely more advance and one of its feature will come in handy for our purposes.</p>
+
+<p>On OSX the LaTeXTools plug-in will by default for a Skim installation, therefore we just need to install it with the installer provided on its <a href="http://skim-app.sourceforge.net/">website</a> and that's all there is to it.</p>
+
+<h1>Usage and Features</h1>
+
+<p>Great! In a few minutes and without any particular effort we have a nice and productive LaTeX environment. Let's give it a test drive.</p>
+
+<h2>Our first document</h2>
+
+<p>Let's create a new LaTeX document called <code>sublime.tex</code>.</p>
+
+<p>File /Users/gabro/Projects/codepills.net/octopress/source/downloads/code/latex/sublime.tex could not be found</p>
+
+<p><div><script src='https://gist.github.com/4186089.js?file='></script>
+<noscript><pre><code>\documentclass{article}
+
+\title{LaTeX is now Sublime}
+\author{Gabriele Petronella}
+
+\begin{document}
+
+\maketitle
+
+\section{My first section}
+LaTeXTools is definitely a great plug-in!
+
+\end{document}</code></pre></noscript></div>
+</p>
+
+<p>Now let's compile it using the shortcut <code>Cmd+B</code> (or by selecting <em>Tools -> Build</em>)</p>
+
+<p>If everything went as expected, you will obtain a PDF document that will be automatically opened with Skim.</p>
+
+<p><img src="http://f.cl.ly/items/3H3P3L2L2h3P35412d2f/sublime-latex.png"></p>
+
+<h2>Forward and backward search</h2>
+
+<p>That was nice and easy, but I'd like to go a little more further and show you something slightly more advanced.</p>
+
+<p>If you've ever used a LaTeX-specific editor one of the feature that you have probably loved was the possibility of jumping to the PDF from the source and the other way around from the PDF to the LaTeX source.</p>
+
+<p>You may think (and many people I know actually did) that kind of auto-magic feature must be necessarily included in a custom IDE and that Sublime Text is a too generic editor for handling such a specific feature.
+Well, it turns out that you are wrong, my friend. Let's configure our editor in order to achieve such a cool behavior!</p>
+
+<h3>Forward</h3>
+
+<p>So you want to jump to the PDF from your LaTeX code? You're lucky, since LaTeXTools already did the work for you (according you're using Skim as a viewer, of course).
+Simply use the shortcut <code>Cmd+L-J</code> (which means press <code>Cmd+L</code>, release it and then press <code>J</code>) and you'll jump to the PDF at the same row where your cursor is in the source file.</p>
+
+<p>If you pay attention you'll also notice that this is automatically done whenever you compile the document with <code>Cmd+B</code>, a feature that can be disabled in case it annoys you.</p>
+
+<h3>Backward</h3>
+
+<p>Jumping to the PDF is great, but suppose you are reading the PDF and you find a typo. Wouldn't be nice to jump back to the source in order to modify it on the flight?</p>
+
+<p>Here is where Skim reveals its power: all you need is to inform it that you're using Sublime Text as editor and tell it how to communicate with it.</p>
+
+<p>Open the Skim preferences and select the <em>Sync tab</em>.
+Be sure that the <em>Check for file changes</em> is unchecked, select <em>Custom</em> as Preset and paste the following path as Command:
+<code>
+/Applications/Sublime Text 2.app/Contents/SharedSupport/bin/subl
+</code>
+and this parameters as Arguments:
+<code>
+"%file":%line
+</code></p>
+
+<p><img src="http://f.cl.ly/items/2O1R3Y1c392j0l3U3b0e/skim-pref.png" width="500"></p>
+
+<p>And there we go, now we can simply press <code>Cmd+Shift+Click</code> on the PDF file in order to jump back to the LaTeX source. Very convenient indeed!</p>
+
+<h1>Conclusions</h1>
+
+<p>Sublime Text 2 is a great LaTeX companion, thanks to the great plug-in LaTeXTools and after a few hours playing with it I think most of you will agree with me.</p>
+
+<p>I encourage you to explore all the feature that the plug-in has to offer, especially the very convenient shortcuts that will definitely increase your productivity. A couple of examples: <code>Cmd+L+E</code> will surround the selection into a <code>emph</code> tag whereas <code>Cmd+L-C</code> will start a tag named as the word preceding the cursors. Many other useful information can be found on the <a href="https://github.com/SublimeText/LaTeXTools">github repo</a> of the plug-in.</p>
+
+<p>Now go and be productive!</p>
+
+<p>Stay tuned for more pills</p>
+
+<p>Bye</p>
+]]></content>
+  </entry>
+  
+</feed>
