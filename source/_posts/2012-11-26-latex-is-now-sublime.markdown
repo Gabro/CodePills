@@ -19,8 +19,8 @@ If instead you know what I'm talking about, I'd like to share with you all my La
 # Tools Setup
 
 ## LaTeX
-Installing LaTeX on OSX is pretty straighforward: all it takes is to visit the MacTeX project page and download the installer.
-The installation comes with a extensive collection of LaTeX packages and with many useful tools, such as TeXLive, a package manager, and BibDesk, a BibTeX guy.
+Installing LaTeX on OSX is pretty straighforward: all it takes is to visit the [MacTeX project page](http://www.tug.org/mactex/) and download the installer.
+The installation comes with a extensive collection of LaTeX packages along with many useful tools, such as TeXLive, a package manager, and BibDesk, a BibTeX guy.
 
 ## Sublime Text 2
 [Sublime Text](http://www.sublimetext.com/) is an amazing editor. Period.
@@ -45,9 +45,9 @@ Just open the command palette (*Tools -> Command Palette...* or `` Cmd+Shift+P `
 Wait for the installation to complete (status messages will appear at the bottom of the Sublime Text window) and there you go, quick and easy.
 
 ## Skim
-Skim is a nice PDF viewer for OSX. I've never had nothing to complain about using the default Preview viewer, but Skim is definitely more advance and one of its feature will come in handy for our purposes.
+[Skim](http://skim-app.sourceforge.net/) is a nice PDF viewer for OSX. I've never had nothing to complain about using the default Preview viewer, but Skim is definitely more advance and one of its feature will come in handy for our purposes.
 
-On OSX the LaTeXTools plug-in will by default for a Skim installation, therefore we just need to install it with the installer provided on its website and that's all there is to it.
+On OSX the LaTeXTools plug-in will by default for a Skim installation, therefore we just need to install it with the installer provided on its [website](http://skim-app.sourceforge.net/) and that's all there is to it.
 
 # Usage and Features
 Great! In a few minutes and without any particular effort we have a nice and productive LaTeX environment. Let's give it a test drive.
@@ -63,7 +63,7 @@ Now let's compile it using the shortcut `` Cmd+B `` (or by selecting *Tools -> B
 
 If everything went as expected, you will obtain a PDF document that will be automatically opened with Skim.
 
-{% img /images/posts/sublime-latex/sublime-tex.png %}
+{% img http://f.cl.ly/items/3H3P3L2L2h3P35412d2f/sublime-latex.png %}
 
 ## Forward and backward search
 That was nice and easy, but I'd like to go a little more further and show you something slightly more advanced.
@@ -89,5 +89,22 @@ Be sure that the *Check for file changes* is unchecked, select *Custom* as Prese
 ```
 /Applications/Sublime Text 2.app/Contents/SharedSupport/bin/subl 
 ```
+and this parameters as Arguments:
+```
+"%file":%line
+```
 
-Bla
+{% img http://f.cl.ly/items/2O1R3Y1c392j0l3U3b0e/skim-pref.png 500 %}
+
+And there we go, now we can simply press `` Cmd+Shift+Click `` on the PDF file in order to jump back to the LaTeX source. Very convenient indeed!
+
+# Conclusions
+Sublime Text 2 is a great LaTeX companion, thanks to the great plug-in LaTeXTools and after a few hours playing with it I think most of you will agree with me.
+
+I encourage you to explore all the feature that the plug-in has to offer, especially the very convenient shortcuts that will definitely increase your productivity. A couple of examples: `` Cmd+L+E `` will surround the selection into a `` emph `` tag whereas `` Cmd+L-C `` will start a tag named as the word preceding the cursors. Many other useful information can be found on the [github repo](https://github.com/SublimeText/LaTeXTools) of the plug-in.
+
+Now go and be productive!
+
+Stay tuned for more pills
+
+Bye

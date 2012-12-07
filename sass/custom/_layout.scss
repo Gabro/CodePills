@@ -2,8 +2,41 @@ article.post h2, article.post p {
   max-width: 90% !important;
 }
 
+article.post .gist {
+  max-width: 90% !important;
+}
+
+// article.post figure {
+  //   max-width: 90% !important;
+  //   img {
+    //     max-width: 100% !important;
+  //   }
+  //   padding-bottom: 15px;
+  //   &.left {
+    //     float: left;
+    //     padding-right: 15px;
+  //   }
+  //   &.right {
+    //     float: right;
+    //     padding-left: 15px;
+  //   }
+// }
+
 article.post figure {
   max-width: 90% !important;
+}
+
+article.post img {
+  max-width: 100% !important;
+  padding-bottom: 15px;
+  &.left {
+    float: left;
+    padding-right: 15px;
+  }
+  &.right {
+    float: right;
+    padding-left: 15px;
+  }
 }
 
 div.sharing-box {
@@ -12,17 +45,18 @@ div.sharing-box {
   left: 0px !important;
   top: 0px !important;
   vertical-align: middle !important;
+  clear: both;
 }
 
 div.fb-like.fb_edge_widget_with_comment.fb_iframe_widget {
-	vertical-align: middle !important;
-	padding-top: 4px !important;
+  vertical-align: middle !important;
+  padding-top: 4px !important;
 }
 
 iframe.twitter-share-button.twitter-count-horizontal {
-	vertical-align: middle !important;
+  vertical-align: middle !important;
 }
 
 #disqus_thread {
-	max-width: 90% !important;
+max-width: 90% !important;
 }
