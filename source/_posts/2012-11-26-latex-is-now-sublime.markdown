@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "LaTeX is now Sublime"
-date: 2012-11-26 23:23
+date: 2012-12-6 22:53
 comments: true
 categories: latex sublime-text
 ---
