@@ -4,7 +4,7 @@
   <title><![CDATA[Code Pills]]></title>
   <link href="http://codepills.net/atom.xml" rel="self"/>
   <link href="http://codepills.net/"/>
-  <updated>2012-12-07T13:46:53-06:00</updated>
+  <updated>2012-12-12T16:57:30-06:00</updated>
   <id>http://codepills.net/</id>
   <author>
     <name><![CDATA[Gabriele Petronella]]></name>
@@ -33,7 +33,7 @@
 Being a tidy person you correctly decided to split your document in several parts, each one in a separate <code>.tex</code> file.
 So you end up having a <code>main.tex</code> document that looks like this</p>
 
-<div><script src='https://gist.github.com/4235760.js?file='></script>
+<div><script src='https://gist.github.com/4235760.js'></script>
 <noscript><pre><code>\documentclass{article}
 
 \title{A long document}
@@ -155,7 +155,7 @@ Wait for the installation to complete (status messages will appear at the bottom
 
 <p>Let&#8217;s create a new LaTeX document called <code>sublime.tex</code>.</p>
 
-<div><script src='https://gist.github.com/4186089.js?file='></script>
+<div><script src='https://gist.github.com/4186089.js'></script>
 <noscript><pre><code>\documentclass{article}
 
 \title{LaTeX is now Sublime}
