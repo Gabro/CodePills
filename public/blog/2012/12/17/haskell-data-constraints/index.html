@@ -1,0 +1,282 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Haskell data constraints, the right way - Code Pills</title>
+  <meta name="author" content="Gabriele Petronella">
+
+  
+  <meta name="description" content="Haskell Data Constraints, the Right Way Dec 17th, 2012 Recently I&#8217;ve been using the Haskell language to implement the solutions to the &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://codepills.net/blog/2012/12/17/haskell-data-constraints/">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="/javascripts/ender.js"></script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <link href="/atom.xml" rel="alternate" title="Code Pills" type="application/atom+xml">
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+
+</head>
+
+<body >
+  <header role="banner" id="sidebar">
+    <!-- Logo -->
+<aside id="logo" class="clearfix">
+  <div class="clearfix">
+    <a href="/">Code Pills</a>
+  </div>
+</aside>
+
+<ul id="menu">
+
+  <li class="title">
+    <h1 id="title"><a href="/">Code Pills</a></h1>
+  </li>
+
+
+  <li class="subtitle">
+    <h2 id="subtitle">code pills from real life experience</h2>
+  </li>
+
+<!--   <li class="link">
+    <a href="/about/">about</a>
+  </li> -->
+
+  <li class="link">
+    <a href="http://twitter.com/Gabro27/" target="_blank">twitter</a>
+  </li>
+
+
+  <li class="link">
+    <a href="http://github.com/Gabro/" target="_blank">github</a>
+  </li>
+
+  <li class="link rss">
+    <a href="/atom.xml">rss feed</a>
+  </li>
+</ul>
+
+
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:codepills.net" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+
+
+<!-- Octopress Love -->
+<aside id="octopress_linkback">
+  <a href="http://octopress.org/">
+    <span class="unicode_square">
+      <span class="unicode_circle">
+        &nbsp;
+      </span>
+    </span>
+    <span class="octopress">Powered by Octopress</span>
+  </a>
+</aside>
+
+  </header>
+  <section id="main">
+    <article class="post">
+  
+  <header>
+    
+      <h2 class="entry-title">Haskell Data Constraints, the Right Way</h2>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-12-17T14:21:00-06:00" pubdate data-updated="true">Dec 17<span>th</span>, 2012</time>
+        
+      </p>
+    
+  </header>
+
+
+<p>Recently I&#8217;ve been using the Haskell language to implement the solutions to the <a href="https://class.coursera.org/algo2-2012-001/class/index">Coursera&#8217;s Algorithms 2</a> online course.</p>
+
+<p>The idea of using Haskell came talking with <a href="http://blog.mariosangiorgio.com/">Mario</a> who was already using it for the very same purpose.</p>
+
+<p>In such context Mario started developing a purely functional Union-Find data structure an he eventually run into an <a href="http://blog.mariosangiorgio.com/2012/12/17/let-the-type-inferencer-work-for-you/">interesting problem</a> concerning algebraic data types that inspired this post.</p>
+
+<!-- more -->
+
+
+<p>In order to define a parametric data type in Haskell you usually write something like follows. (I&#8217;ll take as example the very same data structure mentioned above.)</p>
+
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class='haskell'><span class='line'><span class="kr">data</span> <span class="kt">UnionFindElement</span> <span class="n">valueType</span> <span class="ow">=</span>
+</span><span class='line'>  <span class="kt">RootElement</span> <span class="n">valueType</span> <span class="o">|</span>
+</span><span class='line'>  <span class="kt">ElementWithParent</span> <span class="n">valueType</span> <span class="p">(</span><span class="kt">UnionFindElement</span> <span class="n">valueType</span><span class="p">)</span>
+</span><span class='line'>  <span class="kr">deriving</span> <span class="p">(</span><span class="kt">Eq</span><span class="p">,</span> <span class="kt">Show</span><span class="p">)</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Everything looks fine and we try to use the new data type declaring a new function and its signature</p>
+
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='haskell'><span class='line'><span class="nf">holds</span> <span class="ow">::</span> <span class="kt">UnionFindElement</span> <span class="n">valueType</span> <span class="ow">-&gt;</span> <span class="n">valueType</span> <span class="ow">-&gt;</span> <span class="kt">Bool</span>
+</span><span class='line'><span class="nf">holds</span> <span class="p">(</span><span class="kt">RootElement</span> <span class="n">v</span><span class="p">)</span> <span class="n">value</span> <span class="ow">=</span> <span class="n">v</span> <span class="o">==</span> <span class="n">value</span>
+</span><span class='line'><span class="nf">holds</span> <span class="p">(</span><span class="kt">ElementWithParent</span> <span class="n">v</span> <span class="n">root</span><span class="p">)</span> <span class="n">value</span> <span class="ow">=</span> <span class="n">v</span> <span class="o">==</span> <span class="n">value</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>What we are doing here is to perform an equality check on an argument whose type is a generic <code>valueType</code>. It seems reasonable but the compiler is not very happy about that: in fact we never promised that <code>valueType</code> will be an instance of the class <code>Eq</code> therefore it cannot determine whether the <code>==</code> operation can be performed or not.</p>
+
+<p>The obvious fix here seems to put a constraint on the data constructor, meaning something: &#8221;<em>look the parameter can be any type, but I guarantee that such type is an instance of Eq</em>&#8221;.</p>
+
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='haskell'><span class='line'><span class="kr">data</span> <span class="p">(</span><span class="kt">Eq</span> <span class="n">valueType</span><span class="p">)</span> <span class="ow">=&gt;</span> <span class="kt">UnionFindElement</span> <span class="n">valueType</span> <span class="ow">=</span> <span class="o">...</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Perfect right? Well, unfortunately it doesn&#8217;t work as expected (I won&#8217;t go through the details here) and this fact is so well known that such construct has been deprecated and it will be removed soon, as stated in the <a href="http://www.haskell.org/ghc/docs/latest/html/users_guide/data-type-extensions.html">official documentation</a>.</p>
+
+<blockquote><p>This is widely considered a misfeature, and is going to be removed from the language.</p></blockquote>
+
+
+<p>Damn! This means that we need to manually specify for every signature that our <code>valueType</code> is an instance of <code>Eq</code>, doing something like:</p>
+
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='haskell'><span class='line'><span class="nf">holds</span> <span class="ow">::</span> <span class="p">(</span><span class="kt">Eq</span> <span class="n">valueType</span><span class="p">)</span> <span class="ow">=&gt;</span> <span class="kt">UnionFindElement</span> <span class="n">valueType</span> <span class="ow">-&gt;</span> <span class="n">valueType</span> <span class="ow">-&gt;</span> <span class="kt">Bool</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Really annoying indeed&#8230;</p>
+
+<p>Can we do better? Fortunately we can! It turns out that in Haskell is possible to put constraints on the data type constructors using something called <strong>Generalized Algebraic Data Types</strong> (GADTs). According to the <a href="http://www.haskell.org/ghc/docs/latest/html/users_guide/data-type-extensions.html#gadt">doc</a>:</p>
+
+<blockquote><p>Generalised Algebraic Data Types generalise ordinary algebraic data types by allowing constructors to have richer return types.</p></blockquote>
+
+
+<p>This roughly means that we can specify a custom signature for the data constructors, and therefore we can also specify the necessary data constraints.</p>
+
+<p>How can we do that? Take a look at the following code:</p>
+
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='haskell'><span class='line'><span class="kr">data</span> <span class="kt">UnionFindElement</span> <span class="n">valueType</span> <span class="kr">where</span>
+</span><span class='line'>      <span class="kt">RootElement</span>       <span class="ow">::</span> <span class="p">(</span><span class="kt">Eq</span> <span class="n">valueType</span><span class="p">,</span> <span class="kt">Show</span> <span class="n">valueType</span><span class="p">)</span> <span class="ow">=&gt;</span> <span class="n">valueType</span> <span class="ow">-&gt;</span> <span class="kt">UnionFindElement</span> <span class="n">valueType</span>
+</span><span class='line'>      <span class="kt">ElementWithParent</span> <span class="ow">::</span> <span class="p">(</span><span class="kt">Eq</span> <span class="n">valueType</span><span class="p">,</span> <span class="kt">Show</span> <span class="n">valueType</span><span class="p">)</span> <span class="ow">=&gt;</span> <span class="n">valueType</span> <span class="ow">-&gt;</span> <span class="n">valueType</span> <span class="ow">-&gt;</span> <span class="kt">UnionFindElement</span> <span class="n">valueType</span>
+</span><span class='line'><span class="kr">deriving</span> <span class="kr">instance</span> <span class="kt">Eq</span> <span class="p">(</span><span class="kt">UnionFindElement</span> <span class="n">valueType</span><span class="p">)</span>
+</span><span class='line'><span class="kr">deriving</span> <span class="kr">instance</span> <span class="kt">Show</span> <span class="p">(</span><span class="kt">UnionFindElement</span> <span class="n">valueType</span><span class="p">)</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>As already anticipated with this new syntax we are allowed to specify the constructor signature. Therefore we are putting a couple of constraints (<code>Eq</code> and <code>Show</code>) on valueType. After that we want to make our new data type an instance of <code>Eq</code> and <code>Show</code>, but it turns out that we cannot use the &#8216;normal&#8217; syntax for deriving, since the instance declaration would have a non-standard context. Fortunately Haskell comes with a mechanisms called <strong>stand-alone deriving declaration</strong> which allows us to specify the instance derivation separately from the data type definition (if you want to know more about it, <a href="http://www.haskell.org/ghc/docs/6.12.2/html/users_guide/deriving.html">the doc</a> is there waiting for you).</p>
+
+<p>So we made it! We can now write any signature using our newly defined <code>UnionFindElement</code> and the compiler will know that its type parameter will be an instance of <code>Eq</code>, allowing us to perform (dis)equality operations on it!</p>
+
+<p>It&#8217;s all for today,
+stay tuned for more pills!</p>
+
+
+
+  <div class="sharing-box">
+  
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://codepills.net/blog/2012/12/17/haskell-data-constraints/" data-via="Gabro27" data-counturl="http://codepills.net/blog/2012/12/17/haskell-data-constraints/" data-size="large">Tweet</a>
+  
+  
+  
+  <div class="fb-like" data-send="true" data-width="450" data-show-faces="false"></div>
+  
+</div>
+
+</article>
+
+  <section class="comments">
+    <h2>Comments</h2>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+  </section>
+
+
+    <nav role="navigation" id="pagination">
+
+</nav>
+  </section>
+  
+
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'codepills';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://codepills.net/blog/2012/12/17/haskell-data-constraints/';
+        var disqus_url = 'http://codepills.net/blog/2012/12/17/haskell-data-constraints/';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) {return;}
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/all.js#appId=212934732101925&xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+</body>
+</html>
