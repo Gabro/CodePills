@@ -64,12 +64,12 @@ How can we do that? Take a look at the following code:
 {% codeblock lang:haskell %}
 data UnionFindElement valueType where
   	RootElement 	  :: (Eq valueType, Show valueType) => valueType -> UnionFindElement valueType
-  	ElementWithParent :: (Eq valueType, Show valueType) => valueType -> valueType -> UnionFindElement valueType
+  	ElementWithParent :: (Eq valueType, Show valueType) => valueType -> UnionFindElement valueType -> UnionFindElement valueType
 deriving instance Eq (UnionFindElement valueType)
 deriving instance Show (UnionFindElement valueType)
 {% endcodeblock %}
 
-As already anticipated with this new syntax we are allowed to specify the constructor signature. Therefore we are putting a couple of constraints (`Eq` and `Show`) on valueType. After that we want to make our new data type an instance of `Eq` and `Show`, but it turns out that we cannot use the 'normal' syntax for deriving, since the instance declaration would have a non-standard context. Fortunately Haskell comes with a mechanisms called **stand-alone deriving declaration** which allows us to specify the instance derivation separately from the data type definition (if you want to know more about it, [the doc](http://www.haskell.org/ghc/docs/6.12.2/html/users_guide/deriving.html) is there waiting for you).
+As already anticipated, with this new syntax we are allowed to specify the constructor signature. Therefore we are putting a couple of constraints (`Eq` and `Show`) on valueType. After that we want to make our new data type an instance of `Eq` and `Show`, but it turns out that we cannot use the 'normal' syntax for deriving, since the instance declaration would have a non-standard context. Fortunately Haskell comes with a mechanisms called **stand-alone deriving declaration** which allows us to specify the instance derivation separately from the data type definition (if you want to know more about it, [the doc](http://www.haskell.org/ghc/docs/6.12.2/html/users_guide/deriving.html) is there waiting for you).
 
 So we made it! We can now write any signature using our newly defined `UnionFindElement` and the compiler will know that its type parameter will be an instance of `Eq`, allowing us to perform (dis)equality operations on it!
 

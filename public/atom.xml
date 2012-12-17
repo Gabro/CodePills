@@ -4,7 +4,7 @@
   <title><![CDATA[Code Pills]]></title>
   <link href="http://codepills.net/atom.xml" rel="self"/>
   <link href="http://codepills.net/"/>
-  <updated>2012-12-17T16:03:13-06:00</updated>
+  <updated>2012-12-17T16:13:44-06:00</updated>
   <id>http://codepills.net/</id>
   <author>
     <name><![CDATA[Gabriele Petronella]]></name>
@@ -14,7 +14,7 @@
 
   
   <entry>
-    <title type="html"><![CDATA[Haskell data constraints, the right way]]></title>
+    <title type="html"><![CDATA[Haskell data declaration constraints, the right way]]></title>
     <link href="http://codepills.net/blog/2012/12/17/haskell-data-constraints/"/>
     <updated>2012-12-17T14:21:00-06:00</updated>
     <id>http://codepills.net/blog/2012/12/17/haskell-data-constraints</id>
@@ -79,7 +79,7 @@
 <blockquote><p>Generalised Algebraic Data Types generalise ordinary algebraic data types by allowing constructors to have richer return types.</p></blockquote>
 
 
-<p>This roughly means that we can specify a custom signature for the data constructors, and therefore we can also specify the necessary data constraints.</p>
+<p>This roughly means that we can specify a custom signature for the data constructors, and therefore we can also specify the necessary type constraints.</p>
 
 <p>How can we do that? Take a look at the following code:</p>
 
@@ -90,13 +90,13 @@
 <span class='line-number'>5</span>
 </pre></td><td class='code'><pre><code class='haskell'><span class='line'><span class="kr">data</span> <span class="kt">UnionFindElement</span> <span class="n">valueType</span> <span class="kr">where</span>
 </span><span class='line'>      <span class="kt">RootElement</span>       <span class="ow">::</span> <span class="p">(</span><span class="kt">Eq</span> <span class="n">valueType</span><span class="p">,</span> <span class="kt">Show</span> <span class="n">valueType</span><span class="p">)</span> <span class="ow">=&gt;</span> <span class="n">valueType</span> <span class="ow">-&gt;</span> <span class="kt">UnionFindElement</span> <span class="n">valueType</span>
-</span><span class='line'>      <span class="kt">ElementWithParent</span> <span class="ow">::</span> <span class="p">(</span><span class="kt">Eq</span> <span class="n">valueType</span><span class="p">,</span> <span class="kt">Show</span> <span class="n">valueType</span><span class="p">)</span> <span class="ow">=&gt;</span> <span class="n">valueType</span> <span class="ow">-&gt;</span> <span class="n">valueType</span> <span class="ow">-&gt;</span> <span class="kt">UnionFindElement</span> <span class="n">valueType</span>
+</span><span class='line'>      <span class="kt">ElementWithParent</span> <span class="ow">::</span> <span class="p">(</span><span class="kt">Eq</span> <span class="n">valueType</span><span class="p">,</span> <span class="kt">Show</span> <span class="n">valueType</span><span class="p">)</span> <span class="ow">=&gt;</span> <span class="n">valueType</span> <span class="ow">-&gt;</span> <span class="kt">UnionFindElement</span> <span class="n">valueType</span> <span class="ow">-&gt;</span> <span class="kt">UnionFindElement</span> <span class="n">valueType</span>
 </span><span class='line'><span class="kr">deriving</span> <span class="kr">instance</span> <span class="kt">Eq</span> <span class="p">(</span><span class="kt">UnionFindElement</span> <span class="n">valueType</span><span class="p">)</span>
 </span><span class='line'><span class="kr">deriving</span> <span class="kr">instance</span> <span class="kt">Show</span> <span class="p">(</span><span class="kt">UnionFindElement</span> <span class="n">valueType</span><span class="p">)</span>
 </span></code></pre></td></tr></table></div></figure>
 
 
-<p>As already anticipated with this new syntax we are allowed to specify the constructor signature. Therefore we are putting a couple of constraints (<code>Eq</code> and <code>Show</code>) on valueType. After that we want to make our new data type an instance of <code>Eq</code> and <code>Show</code>, but it turns out that we cannot use the &#8216;normal&#8217; syntax for deriving, since the instance declaration would have a non-standard context. Fortunately Haskell comes with a mechanisms called <strong>stand-alone deriving declaration</strong> which allows us to specify the instance derivation separately from the data type definition (if you want to know more about it, <a href="http://www.haskell.org/ghc/docs/6.12.2/html/users_guide/deriving.html">the doc</a> is there waiting for you).</p>
+<p>As already anticipated, with this new syntax we are allowed to specify the constructor signature. Therefore we are putting a couple of constraints (<code>Eq</code> and <code>Show</code>) on valueType. After that we want to make our new data type an instance of <code>Eq</code> and <code>Show</code>, but it turns out that we cannot use the &#8216;normal&#8217; syntax for deriving, since the instance declaration would have a non-standard context. Fortunately Haskell comes with a mechanisms called <strong>stand-alone deriving declaration</strong> which allows us to specify the instance derivation separately from the data type definition (if you want to know more about it, <a href="http://www.haskell.org/ghc/docs/6.12.2/html/users_guide/deriving.html">the doc</a> is there waiting for you).</p>
 
 <p>So we made it! We can now write any signature using our newly defined <code>UnionFindElement</code> and the compiler will know that its type parameter will be an instance of <code>Eq</code>, allowing us to perform (dis)equality operations on it!</p>
 

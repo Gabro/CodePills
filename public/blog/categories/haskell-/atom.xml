@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: haskell, | Code Pills]]></title>
+  <link href="http://codepills.net/blog/categories/haskell-/atom.xml" rel="self"/>
+  <link href="http://codepills.net/"/>
+  <updated>2012-12-17T16:13:44-06:00</updated>
+  <id>http://codepills.net/</id>
+  <author>
+    <name><![CDATA[Gabriele Petronella]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Haskell data declaration constraints, the right way]]></title>
+    <link href="http://codepills.net/blog/2012/12/17/haskell-data-constraints/"/>
+    <updated>2012-12-17T14:21:00-06:00</updated>
+    <id>http://codepills.net/blog/2012/12/17/haskell-data-constraints</id>
+    <content type="html"><![CDATA[<p>Recently I've been using the Haskell language to implement the solutions to the <a href="https://class.coursera.org/algo2-2012-001/class/index">Coursera's Algorithms 2</a> online course.</p>
+
+<p>The idea of using Haskell came talking with <a href="http://blog.mariosangiorgio.com/">Mario</a> who was already using it for the very same purpose.</p>
+
+<p>In such context Mario started developing a purely functional Union-Find data structure an he eventually run into an <a href="http://blog.mariosangiorgio.com/2012/12/17/let-the-type-inferencer-work-for-you/">interesting problem</a> concerning algebraic data types that inspired this post.</p>
+
+<!-- more -->
+
+
+<p>In order to define a parametric data type in Haskell you usually write something like follows. (I'll take as example the very same data structure mentioned above.)</p>
+
+<p><div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class='haskell'><span class='line'><span class="kr">data</span> <span class="kt">UnionFindElement</span> <span class="n">valueType</span> <span class="ow">=</span>
+</span><span class='line'>  <span class="kt">RootElement</span> <span class="n">valueType</span> <span class="o">|</span>
+</span><span class='line'>  <span class="kt">ElementWithParent</span> <span class="n">valueType</span> <span class="p">(</span><span class="kt">UnionFindElement</span> <span class="n">valueType</span><span class="p">)</span>
+</span><span class='line'>  <span class="kr">deriving</span> <span class="p">(</span><span class="kt">Eq</span><span class="p">,</span> <span class="kt">Show</span><span class="p">)</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<p>Everything looks fine and we try to use the new data type declaring a new function and its signature</p>
+
+<p><div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='haskell'><span class='line'><span class="nf">holds</span> <span class="ow">::</span> <span class="kt">UnionFindElement</span> <span class="n">valueType</span> <span class="ow">-&gt;</span> <span class="n">valueType</span> <span class="ow">-&gt;</span> <span class="kt">Bool</span>
+</span><span class='line'><span class="nf">holds</span> <span class="p">(</span><span class="kt">RootElement</span> <span class="n">v</span><span class="p">)</span> <span class="n">value</span> <span class="ow">=</span> <span class="n">v</span> <span class="o">==</span> <span class="n">value</span>
+</span><span class='line'><span class="nf">holds</span> <span class="p">(</span><span class="kt">ElementWithParent</span> <span class="n">v</span> <span class="n">root</span><span class="p">)</span> <span class="n">value</span> <span class="ow">=</span> <span class="n">v</span> <span class="o">==</span> <span class="n">value</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<p>What we are doing here is to perform an equality check on an argument whose type is a generic <code>valueType</code>. It seems reasonable but the compiler is not very happy about that: in fact we never promised that <code>valueType</code> will be an instance of the class <code>Eq</code> therefore it cannot determine whether the <code>==</code> operation can be performed or not.</p>
+
+<p>The obvious fix here seems to put a constraint on the data constructor, meaning something: "<em>look the parameter can be any type, but I guarantee that such type is an instance of Eq</em>".</p>
+
+<p><div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='haskell'><span class='line'><span class="kr">data</span> <span class="p">(</span><span class="kt">Eq</span> <span class="n">valueType</span><span class="p">)</span> <span class="ow">=&gt;</span> <span class="kt">UnionFindElement</span> <span class="n">valueType</span> <span class="ow">=</span> <span class="o">...</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<p>Perfect right? Well, unfortunately it doesn't work as expected (I won't go through the details here) and this fact is so well known that such construct has been deprecated and it will be removed soon, as stated in the <a href="http://www.haskell.org/ghc/docs/latest/html/users_guide/data-type-extensions.html">official documentation</a>.
+<blockquote><p>This is widely considered a misfeature, and is going to be removed from the language.</p></blockquote></p>
+
+<p>Damn! This means that we need to manually specify for every signature that our <code>valueType</code> is an instance of <code>Eq</code>, doing something like:</p>
+
+<p><div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='haskell'><span class='line'><span class="nf">holds</span> <span class="ow">::</span> <span class="p">(</span><span class="kt">Eq</span> <span class="n">valueType</span><span class="p">)</span> <span class="ow">=&gt;</span> <span class="kt">UnionFindElement</span> <span class="n">valueType</span> <span class="ow">-&gt;</span> <span class="n">valueType</span> <span class="ow">-&gt;</span> <span class="kt">Bool</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<p>Really annoying indeed...</p>
+
+<p>Can we do better? Fortunately we can! It turns out that in Haskell is possible to put constraints on the data type constructors using something called <strong>Generalized Algebraic Data Types</strong> (GADTs). According to the <a href="http://www.haskell.org/ghc/docs/latest/html/users_guide/data-type-extensions.html#gadt">doc</a>:</p>
+
+<p><blockquote><p>Generalised Algebraic Data Types generalise ordinary algebraic data types by allowing constructors to have richer return types.</p></blockquote></p>
+
+<p>This roughly means that we can specify a custom signature for the data constructors, and therefore we can also specify the necessary type constraints.</p>
+
+<p>How can we do that? Take a look at the following code:
+<div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+</pre></td><td class='code'><pre><code class='haskell'><span class='line'><span class="kr">data</span> <span class="kt">UnionFindElement</span> <span class="n">valueType</span> <span class="kr">where</span><span class="o">&lt;/</span><span class="n">p</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="n">pre</span><span class="o">&gt;&lt;</span><span class="n">code</span><span class="o">&gt;</span><span class="kt">RootElement</span>       <span class="ow">::</span> <span class="p">(</span><span class="kt">Eq</span> <span class="n">valueType</span><span class="p">,</span> <span class="kt">Show</span> <span class="n">valueType</span><span class="p">)</span> <span class="o">=&amp;</span><span class="n">gt</span><span class="p">;</span> <span class="n">valueType</span> <span class="o">-&amp;</span><span class="n">gt</span><span class="p">;</span> <span class="kt">UnionFindElement</span> <span class="n">valueType</span>
+</span><span class='line'><span class="kt">ElementWithParent</span> <span class="ow">::</span> <span class="p">(</span><span class="kt">Eq</span> <span class="n">valueType</span><span class="p">,</span> <span class="kt">Show</span> <span class="n">valueType</span><span class="p">)</span> <span class="o">=&amp;</span><span class="n">gt</span><span class="p">;</span> <span class="n">valueType</span> <span class="o">-&amp;</span><span class="n">gt</span><span class="p">;</span> <span class="kt">UnionFindElement</span> <span class="n">valueType</span> <span class="o">-&amp;</span><span class="n">gt</span><span class="p">;</span> <span class="kt">UnionFindElement</span> <span class="n">valueType</span>
+</span><span class='line'><span class="o">&lt;/</span><span class="n">code</span><span class="o">&gt;&lt;/</span><span class="n">pre</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;</span><span class="kr">deriving</span> <span class="kr">instance</span> <span class="kt">Eq</span> <span class="p">(</span><span class="kt">UnionFindElement</span> <span class="n">valueType</span><span class="p">)</span>
+</span><span class='line'><span class="kr">deriving</span> <span class="kr">instance</span> <span class="kt">Show</span> <span class="p">(</span><span class="kt">UnionFindElement</span> <span class="n">valueType</span><span class="p">)</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<p>As already anticipated, with this new syntax we are allowed to specify the constructor signature. Therefore we are putting a couple of constraints (<code>Eq</code> and <code>Show</code>) on valueType. After that we want to make our new data type an instance of <code>Eq</code> and <code>Show</code>, but it turns out that we cannot use the 'normal' syntax for deriving, since the instance declaration would have a non-standard context. Fortunately Haskell comes with a mechanisms called <strong>stand-alone deriving declaration</strong> which allows us to specify the instance derivation separately from the data type definition (if you want to know more about it, <a href="http://www.haskell.org/ghc/docs/6.12.2/html/users_guide/deriving.html">the doc</a> is there waiting for you).</p>
+
+<p>So we made it! We can now write any signature using our newly defined <code>UnionFindElement</code> and the compiler will know that its type parameter will be an instance of <code>Eq</code>, allowing us to perform (dis)equality operations on it!</p>
+
+<p>It's all for today,
+stay tuned for more pills!</p>
+]]></content>
+  </entry>
+  
+</feed>
