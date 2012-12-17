@@ -200,6 +200,13 @@
 
 <p>As already anticipated, with this new syntax we are allowed to specify the constructor signature. Therefore we are putting a couple of constraints (<code>Eq</code> and <code>Show</code>) on valueType. After that we want to make our new data type an instance of <code>Eq</code> and <code>Show</code>, but it turns out that we cannot use the &#8216;normal&#8217; syntax for deriving, since the instance declaration would have a non-standard context. Fortunately Haskell comes with a mechanisms called <strong>stand-alone deriving declaration</strong> which allows us to specify the instance derivation separately from the data type definition (if you want to know more about it, <a href="http://www.haskell.org/ghc/docs/6.12.2/html/users_guide/deriving.html">the doc</a> is there waiting for you).</p>
 
+<p>The last thing I need to tell you is that the two cool features that we just discussed, GADTs and stand-alone deriving, both need a compiler flag in order to be enabled, respectively <code>-XGADTs</code> and <code>-XStandaloneDeriving</code>. Just add them to your build command and you&#8217;re all set.
+If you use Sublime Text 2, you can change your <code>cmd</code> parameter in <code>Haskell.sublime-build</code> to:</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>"cmd": ["runhaskell", "-XGADTs", "-XStandaloneDeriving", "$file"]</span></code></pre></td></tr></table></div></figure>
+
+
 <p>So we made it! We can now write any signature using our newly defined <code>UnionFindElement</code> and the compiler will know that its type parameter will be an instance of <code>Eq</code>, allowing us to perform (dis)equality operations on it!</p>
 
 <p>It&#8217;s all for today,

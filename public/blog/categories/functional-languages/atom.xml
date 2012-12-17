@@ -4,7 +4,7 @@
   <title><![CDATA[Category: functional-languages | Code Pills]]></title>
   <link href="http://codepills.net/blog/categories/functional-languages/atom.xml" rel="self"/>
   <link href="http://codepills.net/"/>
-  <updated>2012-12-17T16:13:44-06:00</updated>
+  <updated>2012-12-17T16:21:34-06:00</updated>
   <id>http://codepills.net/</id>
   <author>
     <name><![CDATA[Gabriele Petronella]]></name>
@@ -94,6 +94,13 @@
 </span></code></pre></td></tr></table></div></figure></notextile></div></p>
 
 <p>As already anticipated, with this new syntax we are allowed to specify the constructor signature. Therefore we are putting a couple of constraints (<code>Eq</code> and <code>Show</code>) on valueType. After that we want to make our new data type an instance of <code>Eq</code> and <code>Show</code>, but it turns out that we cannot use the 'normal' syntax for deriving, since the instance declaration would have a non-standard context. Fortunately Haskell comes with a mechanisms called <strong>stand-alone deriving declaration</strong> which allows us to specify the instance derivation separately from the data type definition (if you want to know more about it, <a href="http://www.haskell.org/ghc/docs/6.12.2/html/users_guide/deriving.html">the doc</a> is there waiting for you).</p>
+
+<p>The last thing I need to tell you is that the two cool features that we just discussed, GADTs and stand-alone deriving, both need a compiler flag in order to be enabled, respectively <code>-XGADTs</code> and <code>-XStandaloneDeriving</code>. Just add them to your build command and you're all set.
+If you use Sublime Text 2, you can change your <code>cmd</code> parameter in <code>Haskell.sublime-build</code> to:</p>
+
+<p><code>
+"cmd": ["runhaskell", "-XGADTs", "-XStandaloneDeriving", "$file"]
+</code></p>
 
 <p>So we made it! We can now write any signature using our newly defined <code>UnionFindElement</code> and the compiler will know that its type parameter will be an instance of <code>Eq</code>, allowing us to perform (dis)equality operations on it!</p>
 

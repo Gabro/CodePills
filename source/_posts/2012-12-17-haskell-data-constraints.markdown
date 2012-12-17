@@ -71,6 +71,13 @@ deriving instance Show (UnionFindElement valueType)
 
 As already anticipated, with this new syntax we are allowed to specify the constructor signature. Therefore we are putting a couple of constraints (`Eq` and `Show`) on valueType. After that we want to make our new data type an instance of `Eq` and `Show`, but it turns out that we cannot use the 'normal' syntax for deriving, since the instance declaration would have a non-standard context. Fortunately Haskell comes with a mechanisms called **stand-alone deriving declaration** which allows us to specify the instance derivation separately from the data type definition (if you want to know more about it, [the doc](http://www.haskell.org/ghc/docs/6.12.2/html/users_guide/deriving.html) is there waiting for you).
 
+The last thing I need to tell you is that the two cool features that we just discussed, GADTs and stand-alone deriving, both need a compiler flag in order to be enabled, respectively `-XGADTs` and `-XStandaloneDeriving`. Just add them to your build command and you're all set.
+If you use Sublime Text 2, you can change your `cmd` parameter in `Haskell.sublime-build` to:
+
+```
+"cmd": ["runhaskell", "-XGADTs", "-XStandaloneDeriving", "$file"]
+```
+
 So we made it! We can now write any signature using our newly defined `UnionFindElement` and the compiler will know that its type parameter will be an instance of `Eq`, allowing us to perform (dis)equality operations on it!
 
 It's all for today,
