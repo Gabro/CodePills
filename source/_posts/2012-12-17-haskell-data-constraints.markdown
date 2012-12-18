@@ -82,3 +82,11 @@ So we made it! We can now write any signature using our newly defined `UnionFind
 
 It's all for today,
 stay tuned for more pills!
+
+**UPDATE**
+
+As Jason pointed out in the comments you can use a pragma instead of adding compiler flags. In this way you can enable this features in a more flexible way only when you need them. Just add this pragma at the top of your source file and you're done
+
+{% codeblock lang:haskell %}
+{-# LANGUAGE GADTs, StandaloneDeriving #-}
+{% endcodeblock %}

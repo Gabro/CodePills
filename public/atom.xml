@@ -4,7 +4,7 @@
   <title><![CDATA[Code Pills]]></title>
   <link href="http://codepills.net/atom.xml" rel="self"/>
   <link href="http://codepills.net/"/>
-  <updated>2012-12-17T18:57:58-06:00</updated>
+  <updated>2012-12-18T13:39:25-06:00</updated>
   <id>http://codepills.net/</id>
   <author>
     <name><![CDATA[Gabriele Petronella]]></name>
@@ -109,6 +109,15 @@ If you use Sublime Text 2, you can change your <code>cmd</code> parameter in <co
 
 <p>It&#8217;s all for today,
 stay tuned for more pills!</p>
+
+<p><strong>UPDATE</strong></p>
+
+<p>As Jason pointed out in the comments you can use a pragma instead of adding compiler flags. In this way you can enable this features in a more flexible way only when you need them. Just add this pragma at the top of your source file and you&#8217;re done</p>
+
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='haskell'><span class='line'><span class="cm">{-# LANGUAGE GADTs, StandaloneDeriving #-}</span>
+</span></code></pre></td></tr></table></div></figure>
+
 ]]></content>
   </entry>
   
