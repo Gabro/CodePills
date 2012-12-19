@@ -203,10 +203,10 @@
 <span class='line-number'>4</span>
 <span class='line-number'>5</span>
 </pre></td><td class='code'><pre><code class='haskell'><span class='line'><span class="kr">data</span> <span class="kt">UnionFindElement</span> <span class="n">valueType</span> <span class="kr">where</span>
-</span><span class='line'>      <span class="kt">RootElement</span>       <span class="ow">::</span> <span class="p">(</span><span class="kt">Eq</span> <span class="n">valueType</span><span class="p">,</span> <span class="kt">Show</span> <span class="n">valueType</span><span class="p">)</span> <span class="ow">=&gt;</span> <span class="n">valueType</span> <span class="ow">-&gt;</span> <span class="kt">UnionFindElement</span> <span class="n">valueType</span>
-</span><span class='line'>      <span class="kt">ElementWithParent</span> <span class="ow">::</span> <span class="p">(</span><span class="kt">Eq</span> <span class="n">valueType</span><span class="p">,</span> <span class="kt">Show</span> <span class="n">valueType</span><span class="p">)</span> <span class="ow">=&gt;</span> <span class="n">valueType</span> <span class="ow">-&gt;</span> <span class="kt">UnionFindElement</span> <span class="n">valueType</span> <span class="ow">-&gt;</span> <span class="kt">UnionFindElement</span> <span class="n">valueType</span>
+</span><span class='line'>      <span class="kt">RootElement</span>       <span class="ow">::</span> <span class="p">(</span><span class="kt">Eq</span> <span class="n">valueType</span><span class="p">)</span> <span class="ow">=&gt;</span> <span class="n">valueType</span> <span class="ow">-&gt;</span> <span class="kt">UnionFindElement</span> <span class="n">valueType</span>
+</span><span class='line'>      <span class="kt">ElementWithParent</span> <span class="ow">::</span> <span class="p">(</span><span class="kt">Eq</span> <span class="n">valueType</span><span class="p">)</span> <span class="ow">=&gt;</span> <span class="n">valueType</span> <span class="ow">-&gt;</span> <span class="kt">UnionFindElement</span> <span class="n">valueType</span> <span class="ow">-&gt;</span> <span class="kt">UnionFindElement</span> <span class="n">valueType</span>
 </span><span class='line'><span class="kr">deriving</span> <span class="kr">instance</span> <span class="kt">Eq</span> <span class="p">(</span><span class="kt">UnionFindElement</span> <span class="n">valueType</span><span class="p">)</span>
-</span><span class='line'><span class="kr">deriving</span> <span class="kr">instance</span> <span class="kt">Show</span> <span class="p">(</span><span class="kt">UnionFindElement</span> <span class="n">valueType</span><span class="p">)</span>
+</span><span class='line'><span class="kr">deriving</span> <span class="kr">instance</span> <span class="kt">Show</span> <span class="n">valueType</span> <span class="ow">=&gt;</span> <span class="kt">Show</span> <span class="p">(</span><span class="kt">UnionFindElement</span> <span class="n">valueType</span><span class="p">)</span>
 </span></code></pre></td></tr></table></div></figure>
 
 
@@ -232,6 +232,24 @@ stay tuned for more pills!</p>
 </pre></td><td class='code'><pre><code class='haskell'><span class='line'><span class="cm">{-# LANGUAGE GADTs, StandaloneDeriving #-}</span>
 </span></code></pre></td></tr></table></div></figure>
 
+
+<p><strong>UPDATE 2</strong></p>
+
+<p>As Sjoerd suggested in the comments it is not strictly necessary to put the <code>Show</code> constraint in the constructors signature. We can safely remove it provided that we change the standalone deriving from</p>
+
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='haskell'><span class='line'><span class="kr">deriving</span> <span class="kr">instance</span> <span class="kt">Show</span> <span class="p">(</span><span class="kt">UnionFindElement</span> <span class="n">valueType</span><span class="p">)</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>to</p>
+
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='haskell'><span class='line'><span class="kr">deriving</span> <span class="kr">instance</span> <span class="kt">Show</span> <span class="n">valueType</span> <span class="ow">=&gt;</span> <span class="kt">Show</span> <span class="p">(</span><span class="kt">UnionFindElement</span> <span class="n">valueType</span><span class="p">)</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>In such way the compiler will know that it can inherit the <code>Show</code> instance of <code>valueType</code> and use it to display our <code>UnionFindElement</code> whenever needed.</p>
 
 
 
