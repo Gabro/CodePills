@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: objective-c | Code Pills]]></title>
+  <link href="http://codepills.net/blog/categories/objective-c/atom.xml" rel="self"/>
+  <link href="http://codepills.net/"/>
+  <updated>2013-01-01T16:59:48+01:00</updated>
+  <id>http://codepills.net/</id>
+  <author>
+    <name><![CDATA[Gabriele Petronella]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Obj-C: infer types like a man, man]]></title>
+    <link href="http://codepills.net/blog/2013/01/01/obj-c-infer-types-like-a-man-man/"/>
+    <updated>2013-01-01T15:45:00+01:00</updated>
+    <id>http://codepills.net/blog/2013/01/01/obj-c-infer-types-like-a-man-man</id>
+    <content type="html"><![CDATA[<h1>The Objective-C type system, in brief</h1>
+
+<p>From a type system point of view <strong>Objective-C</strong> can be seen as hybrid language: it both allows dynamic typing, therefore achieving a great flexibility, and static typing, turning the compiler in a precious ally.</p>
+
+<p>When coding you can explicitly declare the types of all your variables or decide to use the keywork <code>id</code>, which - in short - is a sort of a hint to the compiler telling him: "<em>Look, I know what I'm doing. Just trust me and everything will work out just fine.</em>".</p>
+
+<p>Sometimes using <code>id</code> comes in very handy, for instance <code>id</code> is the type of any object hold by a generic container (as <code>NSArray</code>) eliminating altogether the need for templates or generics (like you see in C++ or Java).</p>
+
+<!-- more -->
+
+
+<h1><code>id</code> in practice</h1>
+
+<p>A very typical usage of the <code>id</code> keyword is with constructors. Why can't the type be explicitly specified in such a case? Let's make an example: we have a class <code>Person</code> and its subclass <code>Programmer</code>. What if we specify the type for their constructors?</p>
+
+<p><div class='bogus-wrapper'><notextile><figure class='code'><figcaption><span>Person.m </span></figcaption>
+ <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+</pre></td><td class='code'><pre><code class='objc'><span class='line'><span class="k">-</span><span class="p">(</span><span class="n">Person</span> <span class="o">*</span><span class="p">)</span><span class="nf">init</span> <span class="p">{</span><span class="o">&lt;/</span><span class="n">p</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="n">pre</span><span class="o">&gt;&lt;</span><span class="n">code</span><span class="o">&gt;</span><span class="k">if</span> <span class="p">(</span><span class="n">self</span> <span class="o">=</span> <span class="p">[</span><span class="n">super</span> <span class="n">init</span><span class="p">])</span> <span class="p">{</span>
+</span><span class='line'>    <span class="cm">/* initialize stuff */</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'><span class="k">return</span> <span class="n">self</span><span class="p">;</span>
+</span><span class='line'><span class="o">&lt;/</span><span class="n">code</span><span class="o">&gt;&lt;/</span><span class="n">pre</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;</span><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<p><div class='bogus-wrapper'><notextile><figure class='code'><figcaption><span>Programmer.m </span></figcaption>
+ <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+</pre></td><td class='code'><pre><code class='objc'><span class='line'><span class="k">-</span><span class="p">(</span><span class="n">Programmer</span> <span class="o">*</span><span class="p">)</span><span class="nf">init</span> <span class="p">{</span><span class="o">&lt;/</span><span class="n">p</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="n">pre</span><span class="o">&gt;&lt;</span><span class="n">code</span><span class="o">&gt;</span><span class="k">if</span> <span class="p">(</span><span class="n">self</span> <span class="o">=</span> <span class="p">[</span><span class="n">super</span> <span class="n">init</span><span class="p">])</span> <span class="p">{</span>
+</span><span class='line'>    <span class="cm">/* special skills for programmers */</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'><span class="k">return</span> <span class="n">self</span><span class="p">;</span> <span class="c1">// what&#39;s the return type of self?</span>
+</span><span class='line'><span class="o">&lt;/</span><span class="n">code</span><span class="o">&gt;&lt;/</span><span class="n">pre</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;</span><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<p>We have a conceptual problem here. We initialized the <code>self</code> instance of <code>Programmer</code> with the <code>Person</code> constructur (by calling <code>[super init]</code>), so now it's type is <code>Person</code>.
+Too bad that we our method has a return type of <code>Programmer</code>, therefore we cannot definitely return <code>self</code>, being of the wrong type.</p>
+
+<p>Using <code>id</code> as return type allows subclasses to use their parents constructurs, a widly use technique for neatly solving the issue.</p>
+
+<h1>The compiler is smart...</h1>
+
+<p>Being that such a strong convention the <strong>clang</strong> compiler is already smart enough to infer the return type of many methods, by making use of another equally strong convention of the language: every instance method starting with <code>init</code>, <code>copy</code>, <code>retain</code> or <code>self</code> and every class method starting with <code>alloc</code> or <code>new</code> <strong>is known to be a method returning an instance of the receiver class</strong>.</p>
+
+<p>So as an example the compiler knows that the following call will produce a <code>Person</code> instance, even if the return type of <code>init</code> is <code>id</code>:</p>
+
+<p><div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='objc'><span class='line'><span class="p">[[</span><span class="n">Person</span> <span class="n">alloc</span><span class="p">]</span> <span class="n">init</span><span class="p">]</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<p>Suppose then that <code>Programmer</code> has defined a method called <code>codeLikeAMan</code>. If we try something like follows:</p>
+
+<p><div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='objc'><span class='line'><span class="p">[[[</span><span class="n">Person</span> <span class="n">alloc</span><span class="p">]</span> <span class="n">init</span><span class="p">]</span> <span class="n">codeLikeAMan</span><span class="p">];</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<p>the compiler will yell at us claiming that there is no visible interface for <code>Programmer</code> that declares the selector <code>codeLikeAMan</code>.</p>
+
+<h1>...but not as smart as you may think!</h1>
+
+<p>That's great but what if we want to customize our constructors a little, for instance providing our own factory method? We would probably end up writing something like:</p>
+
+<p><div class='bogus-wrapper'><notextile><figure class='code'><figcaption><span>Person.m </span></figcaption>
+ <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class='objc'><span class='line'><span class="k">+</span><span class="p">(</span><span class="kt">id</span><span class="p">)</span><span class="nf">person</span> <span class="p">{</span><span class="o">&lt;/</span><span class="n">p</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="n">pre</span><span class="o">&gt;&lt;</span><span class="n">code</span><span class="o">&gt;</span><span class="k">return</span> <span class="p">[[</span><span class="n">Person</span> <span class="n">alloc</span><span class="p">]</span> <span class="n">init</span><span class="p">];</span>
+</span><span class='line'><span class="o">&lt;/</span><span class="n">code</span><span class="o">&gt;&lt;/</span><span class="n">pre</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;</span><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<p>Nice, what what about type inference? Let's try</p>
+
+<p><div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='objc'><span class='line'><span class="p">[[</span><span class="n">Person</span> <span class="n">person</span><span class="p">]</span> <span class="n">codeLikeAMan</span><span class="p">];</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<p>Bad news! The compiler doesn't scream anymore: it's not able to infer the type of <code>[Person person]</code> since it does not follow any known naming convention and that's really bad since we all know that now any person can code like a man!</p>
+
+<p>Result: compile and crash at runtime. Not cool at all.</p>
+
+<p>It seems that we just need a way to let the compiler know that our method is returning an instance of the receiver class, being actually a factory method.</p>
+
+<h1>Smart again, with a little help</h1>
+
+<p>It turns out that our friend clang has a <a href="http://clang.llvm.org/docs/LanguageExtensions.html#objc_instancetype">language extension</a> which defines a special contextual keyword <code>instancetype</code> that can be used as a return type of an Objective-C method.</p>
+
+<p>The keyword will tell the compiler to infer the return type, by looking at the method implementation. If we are returning something whose type can be inferred by the compiler, that type will become our new return type. <code>id</code> is used otherwise.</p>
+
+<p>Let's try with our previous example</p>
+
+<p><div class='bogus-wrapper'><notextile><figure class='code'><figcaption><span>Person.m </span></figcaption>
+ <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class='objc'><span class='line'><span class="k">+</span><span class="p">(</span><span class="n">instancetype</span><span class="p">)</span><span class="nf">person</span> <span class="p">{</span><span class="o">&lt;/</span><span class="n">p</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="n">pre</span><span class="o">&gt;&lt;</span><span class="n">code</span><span class="o">&gt;</span><span class="k">return</span> <span class="p">[[</span><span class="n">Person</span> <span class="n">alloc</span><span class="p">]</span> <span class="n">init</span><span class="p">];</span>
+</span><span class='line'><span class="o">&lt;/</span><span class="n">code</span><span class="o">&gt;&lt;/</span><span class="n">pre</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;</span><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<p>The compiler infers that the type <code>[[Person alloc] init]</code> is <code>Person</code>, according to the standard naming rule we discussed above, but now it will go further and it will change the return type of our method to <code>Person</code>. Therefore when we try again to do something as before:</p>
+
+<p><div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='objc'><span class='line'><span class="p">[[</span><span class="n">Person</span> <span class="n">person</span><span class="p">]</span> <span class="n">codeLikeAMan</span><span class="p">];</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<p>the compiler will complain again, since now it knows the type of <code>[Person person]</code> to be <code>Person</code> and it can finally state without any doubt that a random person is not definitely able to code like a man!</p>
+
+<p>It's all for today,
+stay tuned for more pills and happy 2013!</p>
+]]></content>
+  </entry>
+  
+</feed>
