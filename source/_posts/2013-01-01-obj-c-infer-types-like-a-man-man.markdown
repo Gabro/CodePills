@@ -72,7 +72,7 @@ Nice, what what about type inference? Let's try
 [[Person person] codeLikeAMan];
 {% endcodeblock %}
 
-Bad news! The compiler doesn't scream anymore: it's not able to infer the type of `[Person person]` since it does not follow any known naming convention and that's really bad since we all know that now any person can code like a man!
+Bad news! The compiler doesn't scream anymore: it's not able to infer the type of `[Person person]` since it does not follow any known naming convention, and that's really bad since we all know that not any person can code like a man!
 
 Result: compile and crash at runtime. Not cool at all.
 

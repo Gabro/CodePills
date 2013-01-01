@@ -4,7 +4,7 @@
   <title><![CDATA[Code Pills]]></title>
   <link href="http://codepills.net/atom.xml" rel="self"/>
   <link href="http://codepills.net/"/>
-  <updated>2013-01-01T16:59:48+01:00</updated>
+  <updated>2013-01-01T17:12:11+01:00</updated>
   <id>http://codepills.net/</id>
   <author>
     <name><![CDATA[Gabriele Petronella]]></name>
@@ -113,7 +113,7 @@ Too bad that we our method has a return type of <code>Programmer</code>, therefo
 </span></code></pre></td></tr></table></div></figure>
 
 
-<p>Bad news! The compiler doesn&#8217;t scream anymore: it&#8217;s not able to infer the type of <code>[Person person]</code> since it does not follow any known naming convention and that&#8217;s really bad since we all know that now any person can code like a man!</p>
+<p>Bad news! The compiler doesn&#8217;t scream anymore: it&#8217;s not able to infer the type of <code>[Person person]</code> since it does not follow any known naming convention, and that&#8217;s really bad since we all know that not any person can code like a man!</p>
 
 <p>Result: compile and crash at runtime. Not cool at all.</p>
 
