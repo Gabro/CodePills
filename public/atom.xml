@@ -4,7 +4,7 @@
   <title><![CDATA[Code Pills]]></title>
   <link href="http://codepills.net/atom.xml" rel="self"/>
   <link href="http://codepills.net/"/>
-  <updated>2013-01-01T17:12:11+01:00</updated>
+  <updated>2013-01-01T19:28:17+01:00</updated>
   <id>http://codepills.net/</id>
   <author>
     <name><![CDATA[Gabriele Petronella]]></name>
@@ -20,7 +20,7 @@
     <id>http://codepills.net/blog/2013/01/01/obj-c-infer-types-like-a-man-man</id>
     <content type="html"><![CDATA[<h1>The Objective-C type system, in brief</h1>
 
-<p>From a type system point of view <strong>Objective-C</strong> can be seen as hybrid language: it both allows dynamic typing, therefore achieving a great flexibility, and static typing, turning the compiler in a precious ally.</p>
+<p>From a type system point of view <strong>Objective-C</strong> can be seen as hybrid language: it both allows dynamic typing, therefore achieving a great flexibility, and static typing, turning the compiler into a precious ally.</p>
 
 <p>When coding you can explicitly declare the types of all your variables or decide to use the keywork <code>id</code>, which - in short - is a sort of a hint to the compiler telling him: &#8221;<em>Look, I know what I&#8217;m doing. Just trust me and everything will work out just fine.</em>&#8221;.</p>
 

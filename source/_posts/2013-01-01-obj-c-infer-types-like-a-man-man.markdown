@@ -6,7 +6,7 @@ comments: true
 categories: objective-c compiler
 ---
 #The Objective-C type system, in brief
-From a type system point of view **Objective-C** can be seen as hybrid language: it both allows dynamic typing, therefore achieving a great flexibility, and static typing, turning the compiler in a precious ally.
+From a type system point of view **Objective-C** can be seen as hybrid language: it both allows dynamic typing, therefore achieving a great flexibility, and static typing, turning the compiler into a precious ally.
 
 When coding you can explicitly declare the types of all your variables or decide to use the keywork `id`, which - in short - is a sort of a hint to the compiler telling him: "*Look, I know what I'm doing. Just trust me and everything will work out just fine.*".
 
