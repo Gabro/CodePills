@@ -4,7 +4,7 @@
   <title><![CDATA[Category: objective-c | Code Pills]]></title>
   <link href="http://codepills.net/blog/categories/objective-c/atom.xml" rel="self"/>
   <link href="http://codepills.net/"/>
-  <updated>2013-01-01T19:28:17+01:00</updated>
+  <updated>2013-01-02T17:54:14+01:00</updated>
   <id>http://codepills.net/</id>
   <author>
     <name><![CDATA[Gabriele Petronella]]></name>
@@ -12,6 +12,30 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Filter a NSArray using a block]]></title>
+    <link href="http://codepills.net/blog/2013/01/02/filter-a-nsarray-using-a-block/"/>
+    <updated>2013-01-02T17:41:00+01:00</updated>
+    <id>http://codepills.net/blog/2013/01/02/filter-a-nsarray-using-a-block</id>
+    <content type="html"><![CDATA[<p>A quick post just to point out a minor thing.</p>
+
+<p>If you have ever had the need of filtering an array in Objective-C you know that Apple provides a method called <code>filteredArrayUsingPredicate:</code>, that takes a <code>NSPredicate</code> and returns a NSArray containing only the objects from the original array that satisfy that predicate.</p>
+
+<p>I personally find the <code>NSPredicate</code> format really annoying and error prone.</p>
+
+<!-- more -->
+
+
+<p>I'd really like to have a way to filter a NSArray in a functional fashion, passing a block (the Objective-C naming for lambdas) as a predicate and receiving my filtered array back.</p>
+
+<p>Surprisingly there isn't a straightforward method to achieve such a result. What you can do is to filter the indexes - using <code>indexesOfObjectsPassingTest:</code>, which takes a predicate as a block and returns a <code>NSIndexSet</code> - and than you retrieve the objects at those indexes using the <code>objectsAtIndexes:</code> method.</p>
+
+<p>I hate doing that all the time so I wrote a simple category over NSArray to condense this operations in a single one, which defines a new method <code>filteredArrayUsingBlock:</code>. You can find the (very simple) code on <a href="https://github.com/Gabro/NSArray-filter-using-block/">GitHub</a>.</p>
+
+<p>That's all for today. Stay tuned!</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Obj-C: infer types like a man, man]]></title>

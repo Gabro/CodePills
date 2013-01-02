@@ -5,11 +5,11 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>Category: objective-c - Code Pills</title>
+  <title>Filter a NSArray using a block - Code Pills</title>
   <meta name="author" content="Gabriele Petronella">
 
   
-  <meta name="description" content="Category: objective-c">
+  <meta name="description" content="Filter a NSArray Using a Block Jan 2nd, 2013 A quick post just to point out a minor thing. If you have ever had the need of filtering an array in &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -18,7 +18,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://codepills.netblog/categories/objective-c/">
+  <link rel="canonical" href="http://codepills.net/blog/2013/01/02/filter-a-nsarray-using-a-block/">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <script src="/javascripts/modernizr-2.0.js"></script>
   <script src="/javascripts/ender.js"></script>
@@ -105,12 +105,55 @@
 
   </header>
   <section id="main">
-    <div>
-<article role="article" class="post">
+    <article class="post">
   
-    <div class="sharing-box">
+  <header>
+    
+      <h2 class="entry-title">Filter a NSArray Using a Block</h2>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
   
-  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://codepills.netblog/categories/objective-c/index.html" data-via="Gabro27" data-counturl="http://codepills.netblog/categories/objective-c/index.html" data-size="large">Tweet</a>
+
+
+<time datetime="2013-01-02T17:41:00+01:00" pubdate data-updated="true">Jan 2<span>nd</span>, 2013</time>
+        
+      </p>
+    
+  </header>
+
+
+<p>A quick post just to point out a minor thing.</p>
+
+<p>If you have ever had the need of filtering an array in Objective-C you know that Apple provides a method called <code>filteredArrayUsingPredicate:</code>, that takes a <code>NSPredicate</code> and returns a NSArray containing only the objects from the original array that satisfy that predicate.</p>
+
+<p>I personally find the <code>NSPredicate</code> format really annoying and error prone.</p>
+
+<!-- more -->
+
+
+<p>I&#8217;d really like to have a way to filter a NSArray in a functional fashion, passing a block (the Objective-C naming for lambdas) as a predicate and receiving my filtered array back.</p>
+
+<p>Surprisingly there isn&#8217;t a straightforward method to achieve such a result. What you can do is to filter the indexes - using <code>indexesOfObjectsPassingTest:</code>, which takes a predicate as a block and returns a <code>NSIndexSet</code> - and than you retrieve the objects at those indexes using the <code>objectsAtIndexes:</code> method.</p>
+
+<p>I hate doing that all the time so I wrote a simple category over NSArray to condense this operations in a single one, which defines a new method <code>filteredArrayUsingBlock:</code>. You can find the (very simple) code on <a href="https://github.com/Gabro/NSArray-filter-using-block/">GitHub</a>.</p>
+
+<p>That&#8217;s all for today. Stay tuned!</p>
+
+
+
+  <div class="sharing-box">
+  
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://codepills.net/blog/2013/01/02/filter-a-nsarray-using-a-block/" data-via="Gabro27" data-counturl="http://codepills.net/blog/2013/01/02/filter-a-nsarray-using-a-block/" data-size="large">Tweet</a>
   
   
   
@@ -118,52 +161,14 @@
   
 </div>
 
-  
-  
-  <header>
-    <h2 class="entry-title">Category: Objective-c</h2>
-    
-  </header>
-  
-  <div id="blog-archives" class="category">
-
-
-
-  
-  <h2>2013</h2>
-
-<article>
-  
-<h1><a href="/blog/2013/01/02/filter-a-nsarray-using-a-block/">Filter a NSArray using a block</a></h1>
-<time datetime="2013-01-02T17:41:00+01:00" pubdate><span class='month'>Jan</span> <span class='day'>02</span> <span class='year'>2013</span></time>
-
-<footer>
-  <span class="categories">posted in <a class='category' href='/blog/categories/objective-c/'>objective-c</a></span>
-</footer>
-
-
 </article>
 
-
-
-<article>
-  
-<h1><a href="/blog/2013/01/01/obj-c-infer-types-like-a-man-man/">Obj-C: infer types like a man, man</a></h1>
-<time datetime="2013-01-01T15:45:00+01:00" pubdate><span class='month'>Jan</span> <span class='day'>01</span> <span class='year'>2013</span></time>
-
-<footer>
-  <span class="categories">posted in <a class='category' href='/blog/categories/compiler/'>compiler</a>, <a class='category' href='/blog/categories/objective-c/'>objective-c</a></span>
-</footer>
-
-
-</article>
-
+  <section class="comments">
+    <h2>Comments</h2>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
 </div>
+  </section>
 
-  
-</article>
-
-</div>
 
     <nav role="navigation" id="pagination">
 
@@ -177,7 +182,10 @@
       var disqus_shortname = 'codepills';
       
         
-        var disqus_script = 'count.js';
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://codepills.net/blog/2013/01/02/filter-a-nsarray-using-a-block/';
+        var disqus_url = 'http://codepills.net/blog/2013/01/02/filter-a-nsarray-using-a-block/';
+        var disqus_script = 'embed.js';
       
     (function () {
       var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
