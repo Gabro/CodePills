@@ -4,7 +4,7 @@
   <title><![CDATA[Category: objective-c | Code Pills]]></title>
   <link href="http://codepills.net/blog/categories/objective-c/atom.xml" rel="self"/>
   <link href="http://codepills.net/"/>
-  <updated>2013-01-02T17:54:14+01:00</updated>
+  <updated>2013-01-22T13:11:10-06:00</updated>
   <id>http://codepills.net/</id>
   <author>
     <name><![CDATA[Gabriele Petronella]]></name>
@@ -16,7 +16,7 @@
   <entry>
     <title type="html"><![CDATA[Filter a NSArray using a block]]></title>
     <link href="http://codepills.net/blog/2013/01/02/filter-a-nsarray-using-a-block/"/>
-    <updated>2013-01-02T17:41:00+01:00</updated>
+    <updated>2013-01-02T17:41:00-06:00</updated>
     <id>http://codepills.net/blog/2013/01/02/filter-a-nsarray-using-a-block</id>
     <content type="html"><![CDATA[<p>A quick post just to point out a minor thing.</p>
 
@@ -40,7 +40,7 @@
   <entry>
     <title type="html"><![CDATA[Obj-C: infer types like a man, man]]></title>
     <link href="http://codepills.net/blog/2013/01/01/obj-c-infer-types-like-a-man-man/"/>
-    <updated>2013-01-01T15:45:00+01:00</updated>
+    <updated>2013-01-01T15:45:00-06:00</updated>
     <id>http://codepills.net/blog/2013/01/01/obj-c-infer-types-like-a-man-man</id>
     <content type="html"><![CDATA[<h1>The Objective-C type system, in brief</h1>
 

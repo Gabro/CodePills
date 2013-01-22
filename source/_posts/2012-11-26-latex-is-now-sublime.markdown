@@ -83,16 +83,9 @@ Jumping to the PDF is great, but suppose you are reading the PDF and you find a 
 Here is where Skim reveals its power: all you need is to inform it that you're using Sublime Text as editor and tell it how to communicate with it.
 
 Open the Skim preferences and select the *Sync tab*.
-Be sure that the *Check for file changes* is unchecked, select *Custom* as Preset and paste the following path as Command:
-```
-/Applications/Sublime Text 2.app/Contents/SharedSupport/bin/subl 
-```
-and this parameters as Arguments:
-```
-"%file":%line
-```
+Be sure that the *Check for file changes* is unchecked, then select *Sublime Text 2* as preset
 
-{% img http://f.cl.ly/items/2O1R3Y1c392j0l3U3b0e/skim-pref.png 500 %}
+{% img http://f.cl.ly/items/261B3h1T3910300I3r2C/subl-pref.png 500 %}
 
 And there we go, now we can simply press `` Cmd+Shift+Click `` on the PDF file in order to jump back to the LaTeX source. Very convenient indeed!
 
