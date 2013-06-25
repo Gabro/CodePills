@@ -4,7 +4,7 @@
   <title><![CDATA[Code Pills]]></title>
   <link href="http://codepills.net/atom.xml" rel="self"/>
   <link href="http://codepills.net/"/>
-  <updated>2013-01-22T13:11:10-06:00</updated>
+  <updated>2013-06-25T18:11:06+01:00</updated>
   <id>http://codepills.net/</id>
   <author>
     <name><![CDATA[Gabriele Petronella]]></name>
@@ -14,9 +14,88 @@
 
   
   <entry>
+    <title type="html"><![CDATA[Type inference for everyone in iOS 7! (yes, I'm breaking Apple's NDA)]]></title>
+    <link href="http://codepills.net/blog/2013/06/25/foundation-getting-modern/"/>
+    <updated>2013-06-25T15:23:00+01:00</updated>
+    <id>http://codepills.net/blog/2013/06/25/foundation-getting-modern</id>
+    <content type="html"><![CDATA[<h2>DISCLAIMER</h2>
+
+<p>Ok, I&#8217;m about to do a crazy thing nobody has ever done before: I&#8217;ll break Apple&#8217;s NDA! If you&#8217;re about to yell me, whining &#8220;You cannot talk about this, iOS 7 is not out yet and it&#8217;s under NDA&#8221;, well, here&#8217;s my super politically correct answer for you: &#8220;who cares&#8221;. NDAs are made to be broken, and in Apple&#8217;s specific case it can also be purchased for 99$/year. On the other hand, if you work as a lawyer at Apple Inc, forget what I just said. Have I ever told you that I LOVE the new icons in iOS 7? We can be best friends!</p>
+
+<h1><code>instancetype</code> for everyone!</h1>
+
+<p>I already talked about the <code>instancetype</code> keyword in my <a href="http://codepills.net/blog/2013/01/01/obj-c-infer-types-like-a-man-man/">previous article</a>.</p>
+
+<p>I&#8217;m proud to &#8220;announce&#8221; that, as per iOS 7.0 API diffs, finally Apple is making use of <code>instancetype</code> across the Foundation framework (and not only that). What does it mean?</p>
+
+<!-- more -->
+
+
+<p>Simple: consider the following code</p>
+
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='objc'><span class='line'><span class="p">[[</span><span class="n">NSArray</span> <span class="n">array</span><span class="p">]</span> <span class="n">viewDidLoad</span><span class="p">];</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Despite you would expect the compiler to raise at least a warning, it compiles flawlessly on iOS 6 and below. And that is because the signature of <code>+array</code> used to look like</p>
+
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='objc'><span class='line'><span class="k">+</span> <span class="p">(</span><span class="kt">id</span><span class="p">)</span><span class="nf">array</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Being the return type <code>id</code>, the compiler can just check for the existence of a method named <code>viewDidLoad</code>, and, since it does, it will consider the above invocation as legitimate.
+However, starting from iOS 7, the signature has changed into</p>
+
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='objc'><span class='line'><span class="k">+</span> <span class="p">(</span><span class="n">instancetype</span><span class="p">)</span><span class="nf">array</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>therefore the compiler will now know that <code>[NSArray array]</code> is returning a <code>NSArray</code> instance, which of course doesn&#8217;t feature any <code>viewDidLoad</code> method in its interface. This will result in a warning:</p>
+
+<blockquote><p>NSArray may not respond to viewDidLoad</p></blockquote>
+
+
+<p>To wrap it up, all of this means a simple thing: <strong>the compiler can now be smarter and provide even more helpful typechecking</strong></p>
+
+<p>You can already see this in action in the preview of Xcode 5, when compiling against iOS SDK 7.0.</p>
+
+<h1>The <code>instancetype</code> catalog</h1>
+
+<p>As a reference, I&#8217;ll list here all the classes that are now making use of the <code>instancetype</code> return type.</p>
+
+<h3>Foundation framework</h3>
+
+<ul>
+<li><code>NSString</code></li>
+<li><code>NSArray</code> (and <code>NSMutableArray</code>)</li>
+<li><code>NSDictionary</code> (and <code>NSMutableDictionary</code>)</li>
+<li><code>NSSet</code> (and <code>NSMutableSet</code>)</li>
+<li><code>NSDate</code></li>
+<li><code>NSIndexPath</code></li>
+<li><code>NSIndexSet</code></li>
+<li><code>NSNotification</code></li>
+<li><code>NSOrderedSet</code> (and <code>NSMutableOrderedSet</code>)</li>
+</ul>
+
+
+<h3>Other frameworks</h3>
+
+<ul>
+<li><code>MKPolyline</code></li>
+<li><code>MPMediaPickerController</code></li>
+<li><code>UIAppearance</code></li>
+</ul>
+
+]]></content>
+  </entry>
+  
+  <entry>
     <title type="html"><![CDATA[Filter a NSArray using a block]]></title>
     <link href="http://codepills.net/blog/2013/01/02/filter-a-nsarray-using-a-block/"/>
-    <updated>2013-01-02T17:41:00-06:00</updated>
+    <updated>2013-01-02T17:41:00+00:00</updated>
     <id>http://codepills.net/blog/2013/01/02/filter-a-nsarray-using-a-block</id>
     <content type="html"><![CDATA[<p>A quick post just to point out a minor thing.</p>
 
@@ -40,7 +119,7 @@
   <entry>
     <title type="html"><![CDATA[Obj-C: infer types like a man, man]]></title>
     <link href="http://codepills.net/blog/2013/01/01/obj-c-infer-types-like-a-man-man/"/>
-    <updated>2013-01-01T15:45:00-06:00</updated>
+    <updated>2013-01-01T15:45:00+00:00</updated>
     <id>http://codepills.net/blog/2013/01/01/obj-c-infer-types-like-a-man-man</id>
     <content type="html"><![CDATA[<h1>The Objective-C type system, in brief</h1>
 
@@ -178,7 +257,7 @@ stay tuned for more pills and happy 2013!</p>
   <entry>
     <title type="html"><![CDATA[Haskell data declaration constraints, the right way]]></title>
     <link href="http://codepills.net/blog/2012/12/17/haskell-data-constraints/"/>
-    <updated>2012-12-17T14:21:00-06:00</updated>
+    <updated>2012-12-17T14:21:00+00:00</updated>
     <id>http://codepills.net/blog/2012/12/17/haskell-data-constraints</id>
     <content type="html"><![CDATA[<p>Recently I&#8217;ve been using the Haskell language to implement the solutions to the <a href="https://class.coursera.org/algo2-2012-001/class/index">Coursera&#8217;s Algorithms 2</a> online course.</p>
 
@@ -304,7 +383,7 @@ stay tuned for more pills!</p>
   <entry>
     <title type="html"><![CDATA[The root of all Tex]]></title>
     <link href="http://codepills.net/blog/2012/12/07/the-root-of-all-tex/"/>
-    <updated>2012-12-07T13:14:00-06:00</updated>
+    <updated>2012-12-07T13:14:00+00:00</updated>
     <id>http://codepills.net/blog/2012/12/07/the-root-of-all-tex</id>
     <content type="html"><![CDATA[<p>Hi everyone!</p>
 
@@ -383,7 +462,7 @@ If you want to compile your document you should go back to the <code>main.tex</c
   <entry>
     <title type="html"><![CDATA[LaTeX is now Sublime]]></title>
     <link href="http://codepills.net/blog/2012/12/06/latex-is-now-sublime/"/>
-    <updated>2012-12-06T22:53:00-06:00</updated>
+    <updated>2012-12-06T22:53:00+00:00</updated>
     <id>http://codepills.net/blog/2012/12/06/latex-is-now-sublime</id>
     <content type="html"><![CDATA[<p>Hi everyone!</p>
 
@@ -511,7 +590,7 @@ Be sure that the <em>Check for file changes</em> is unchecked, then select <em>S
   <entry>
     <title type="html"><![CDATA[Hello, World!]]></title>
     <link href="http://codepills.net/blog/2012/11/21/hello-world/"/>
-    <updated>2012-11-21T17:15:00-06:00</updated>
+    <updated>2012-11-21T17:15:00+00:00</updated>
     <id>http://codepills.net/blog/2012/11/21/hello-world</id>
     <content type="html"><![CDATA[<p><span class='pullquote-right' data-pullquote='This blog is meant as a resource where to find solutions to real life problems, mostly related to the programming world.'></p>
 
