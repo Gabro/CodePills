@@ -4,7 +4,7 @@
   <title><![CDATA[Category: ios | Code Pills]]></title>
   <link href="http://codepills.net/blog/categories/ios/atom.xml" rel="self"/>
   <link href="http://codepills.net/"/>
-  <updated>2013-09-18T10:51:19-05:00</updated>
+  <updated>2013-09-18T10:54:14-05:00</updated>
   <id>http://codepills.net/</id>
   <author>
     <name><![CDATA[Gabriele Petronella]]></name>
@@ -27,6 +27,81 @@
     <link href="http://codepills.net/blog/2013/06/25/type-inference-for-everyone-ios7/"/>
     <updated>2013-06-25T15:23:00-05:00</updated>
     <id>http://codepills.net/blog/2013/06/25/type-inference-for-everyone-ios7</id>
+    <content type="html"><![CDATA[<h2>DISCLAIMER</h2>
+
+<p>Ok, I'm about to do a crazy thing nobody has ever done before: I'll break Apple's NDA! If you're about to yell me, whining "You cannot talk about this, iOS 7 is not out yet and it's under NDA", well, here's my super politically correct answer for you: "who cares". NDAs are made to be broken, and in Apple's specific case it can also be purchased for 99$/year. On the other hand, if you work as a lawyer at Apple Inc, forget what I just said. Have I ever told you that I LOVE the new icons in iOS 7? We can be best friends!</p>
+
+<h1><code>instancetype</code> for everyone!</h1>
+
+<p>I already talked about the <code>instancetype</code> keyword in my <a href="/blog/2013/01/01/obj-c-infer-types-like-a-man-man/">previous article</a>.</p>
+
+<p>I'm proud to "announce" that, as per iOS 7.0 API diffs, finally Apple is making use of <code>instancetype</code> across the Foundation framework (and not only that). What does it mean?</p>
+
+<!-- more -->
+
+
+<p>Simple: consider the following code</p>
+
+<p><div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='objc'><span class='line'><span class="p">[[</span><span class="n">NSArray</span> <span class="n">array</span><span class="p">]</span> <span class="n">viewDidLoad</span><span class="p">];</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<p>Despite you would expect the compiler to raise at least a warning, it compiles flawlessly on iOS 6 and below. And that is because the signature of <code>+array</code> used to look like</p>
+
+<p><div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='objc'><span class='line'><span class="k">+</span> <span class="p">(</span><span class="kt">id</span><span class="p">)</span><span class="nf">array</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<p>Being the return type <code>id</code>, the compiler can just check for the existence of a method named <code>viewDidLoad</code>, and, since it does, it will consider the above invocation as legitimate.
+However, starting from iOS 7, the signature has changed into</p>
+
+<p><div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='objc'><span class='line'><span class="k">+</span> <span class="p">(</span><span class="n">instancetype</span><span class="p">)</span><span class="nf">array</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<p>therefore the compiler will now know that <code>[NSArray array]</code> is returning a <code>NSArray</code> instance, which of course doesn't feature any <code>viewDidLoad</code> method in its interface. This will result in a warning:</p>
+
+<p><blockquote><p>NSArray may not respond to viewDidLoad</p></blockquote></p>
+
+<p>To wrap it up, all of this means a simple thing: <strong>the compiler can now be smarter and provide even more helpful typechecking</strong></p>
+
+<p>You can already see this in action in the preview of Xcode 5, when compiling against iOS SDK 7.0.</p>
+
+<h1>The <code>instancetype</code> catalog</h1>
+
+<p>As a reference, I'll list here all the classes that are now making use of the <code>instancetype</code> return type.</p>
+
+<h3>Foundation framework</h3>
+
+<ul>
+<li><code>NSString</code></li>
+<li><code>NSArray</code> (and <code>NSMutableArray</code>)</li>
+<li><code>NSDictionary</code> (and <code>NSMutableDictionary</code>)</li>
+<li><code>NSSet</code> (and <code>NSMutableSet</code>)</li>
+<li><code>NSDate</code></li>
+<li><code>NSIndexPath</code></li>
+<li><code>NSIndexSet</code></li>
+<li><code>NSNotification</code></li>
+<li><code>NSOrderedSet</code> (and <code>NSMutableOrderedSet</code>)</li>
+</ul>
+
+
+<h3>Other frameworks</h3>
+
+<ul>
+<li><code>MKPolyline</code></li>
+<li><code>MPMediaPickerController</code></li>
+<li><code>UIAppearance</code></li>
+</ul>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Type inference for everyone in iOS 7! (yes, I'm breaking Apple's NDA)]]></title>
+    <link href="http://codepills.net/blog/2013/06/25/foundation-getting-modern/"/>
+    <updated>2013-06-25T15:23:00-05:00</updated>
+    <id>http://codepills.net/blog/2013/06/25/foundation-getting-modern</id>
     <content type="html"><![CDATA[<h2>DISCLAIMER</h2>
 
 <p>Ok, I'm about to do a crazy thing nobody has ever done before: I'll break Apple's NDA! If you're about to yell me, whining "You cannot talk about this, iOS 7 is not out yet and it's under NDA", well, here's my super politically correct answer for you: "who cares". NDAs are made to be broken, and in Apple's specific case it can also be purchased for 99$/year. On the other hand, if you work as a lawyer at Apple Inc, forget what I just said. Have I ever told you that I LOVE the new icons in iOS 7? We can be best friends!</p>
