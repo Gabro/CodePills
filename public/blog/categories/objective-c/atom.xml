@@ -4,7 +4,7 @@
   <title><![CDATA[Category: objective-c | Code Pills]]></title>
   <link href="http://codepills.net/blog/categories/objective-c/atom.xml" rel="self"/>
   <link href="http://codepills.net/"/>
-  <updated>2013-06-25T18:22:18+01:00</updated>
+  <updated>2013-09-18T10:51:19-05:00</updated>
   <id>http://codepills.net/</id>
   <author>
     <name><![CDATA[Gabriele Petronella]]></name>
@@ -16,7 +16,7 @@
   <entry>
     <title type="html"><![CDATA[Type inference for everyone in iOS 7! (yes, I'm breaking Apple's NDA)]]></title>
     <link href="http://codepills.net/blog/2013/06/25/type-inference-for-everyone-ios7/"/>
-    <updated>2013-06-25T15:23:00+01:00</updated>
+    <updated>2013-06-25T15:23:00-05:00</updated>
     <id>http://codepills.net/blog/2013/06/25/type-inference-for-everyone-ios7</id>
     <content type="html"><![CDATA[<h2>DISCLAIMER</h2>
 
@@ -91,7 +91,7 @@ However, starting from iOS 7, the signature has changed into</p>
   <entry>
     <title type="html"><![CDATA[Filter a NSArray using a block]]></title>
     <link href="http://codepills.net/blog/2013/01/02/filter-a-nsarray-using-a-block/"/>
-    <updated>2013-01-02T17:41:00+00:00</updated>
+    <updated>2013-01-02T17:41:00-06:00</updated>
     <id>http://codepills.net/blog/2013/01/02/filter-a-nsarray-using-a-block</id>
     <content type="html"><![CDATA[<p>A quick post just to point out a minor thing.</p>
 
@@ -115,7 +115,7 @@ However, starting from iOS 7, the signature has changed into</p>
   <entry>
     <title type="html"><![CDATA[Obj-C: infer types like a man, man]]></title>
     <link href="http://codepills.net/blog/2013/01/01/obj-c-infer-types-like-a-man-man/"/>
-    <updated>2013-01-01T15:45:00+00:00</updated>
+    <updated>2013-01-01T15:45:00-06:00</updated>
     <id>http://codepills.net/blog/2013/01/01/obj-c-infer-types-like-a-man-man</id>
     <content type="html"><![CDATA[<h1>The Objective-C type system, in brief</h1>
 

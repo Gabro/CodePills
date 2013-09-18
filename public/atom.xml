@@ -4,7 +4,7 @@
   <title><![CDATA[Code Pills]]></title>
   <link href="http://codepills.net/atom.xml" rel="self"/>
   <link href="http://codepills.net/"/>
-  <updated>2013-06-25T18:22:18+01:00</updated>
+  <updated>2013-09-18T10:51:19-05:00</updated>
   <id>http://codepills.net/</id>
   <author>
     <name><![CDATA[Gabriele Petronella]]></name>
@@ -14,9 +14,18 @@
 
   
   <entry>
+    <title type="html"><![CDATA[My feelings about Auto Layout in Xcode 5]]></title>
+    <link href="http://codepills.net/blog/2013/09/18/my-feelings-about-auto-layout-in-xcode-5/"/>
+    <updated>2013-09-18T10:48:00-05:00</updated>
+    <id>http://codepills.net/blog/2013/09/18/my-feelings-about-auto-layout-in-xcode-5</id>
+    <content type="html"><![CDATA[<p><img src="http://f.cl.ly/items/3u0e443F3t0p2226322M/Just-When-I-Think-You-Couldnt-Possibly-Be-Any-Dumber-You-Go-and-Do-Something-Like-This..-and-Totally-Redeem-Yourself-In-Dumb-and-Dumber.gif"></p>
+]]></content>
+  </entry>
+  
+  <entry>
     <title type="html"><![CDATA[Type inference for everyone in iOS 7! (yes, I'm breaking Apple's NDA)]]></title>
     <link href="http://codepills.net/blog/2013/06/25/type-inference-for-everyone-ios7/"/>
-    <updated>2013-06-25T15:23:00+01:00</updated>
+    <updated>2013-06-25T15:23:00-05:00</updated>
     <id>http://codepills.net/blog/2013/06/25/type-inference-for-everyone-ios7</id>
     <content type="html"><![CDATA[<h2>DISCLAIMER</h2>
 
@@ -95,7 +104,7 @@ However, starting from iOS 7, the signature has changed into</p>
   <entry>
     <title type="html"><![CDATA[Filter a NSArray using a block]]></title>
     <link href="http://codepills.net/blog/2013/01/02/filter-a-nsarray-using-a-block/"/>
-    <updated>2013-01-02T17:41:00+00:00</updated>
+    <updated>2013-01-02T17:41:00-06:00</updated>
     <id>http://codepills.net/blog/2013/01/02/filter-a-nsarray-using-a-block</id>
     <content type="html"><![CDATA[<p>A quick post just to point out a minor thing.</p>
 
@@ -119,7 +128,7 @@ However, starting from iOS 7, the signature has changed into</p>
   <entry>
     <title type="html"><![CDATA[Obj-C: infer types like a man, man]]></title>
     <link href="http://codepills.net/blog/2013/01/01/obj-c-infer-types-like-a-man-man/"/>
-    <updated>2013-01-01T15:45:00+00:00</updated>
+    <updated>2013-01-01T15:45:00-06:00</updated>
     <id>http://codepills.net/blog/2013/01/01/obj-c-infer-types-like-a-man-man</id>
     <content type="html"><![CDATA[<h1>The Objective-C type system, in brief</h1>
 
@@ -257,7 +266,7 @@ stay tuned for more pills and happy 2013!</p>
   <entry>
     <title type="html"><![CDATA[Haskell data declaration constraints, the right way]]></title>
     <link href="http://codepills.net/blog/2012/12/17/haskell-data-constraints/"/>
-    <updated>2012-12-17T14:21:00+00:00</updated>
+    <updated>2012-12-17T14:21:00-06:00</updated>
     <id>http://codepills.net/blog/2012/12/17/haskell-data-constraints</id>
     <content type="html"><![CDATA[<p>Recently I&#8217;ve been using the Haskell language to implement the solutions to the <a href="https://class.coursera.org/algo2-2012-001/class/index">Coursera&#8217;s Algorithms 2</a> online course.</p>
 
@@ -383,7 +392,7 @@ stay tuned for more pills!</p>
   <entry>
     <title type="html"><![CDATA[The root of all Tex]]></title>
     <link href="http://codepills.net/blog/2012/12/07/the-root-of-all-tex/"/>
-    <updated>2012-12-07T13:14:00+00:00</updated>
+    <updated>2012-12-07T13:14:00-06:00</updated>
     <id>http://codepills.net/blog/2012/12/07/the-root-of-all-tex</id>
     <content type="html"><![CDATA[<p>Hi everyone!</p>
 
@@ -462,7 +471,7 @@ If you want to compile your document you should go back to the <code>main.tex</c
   <entry>
     <title type="html"><![CDATA[LaTeX is now Sublime]]></title>
     <link href="http://codepills.net/blog/2012/12/06/latex-is-now-sublime/"/>
-    <updated>2012-12-06T22:53:00+00:00</updated>
+    <updated>2012-12-06T22:53:00-06:00</updated>
     <id>http://codepills.net/blog/2012/12/06/latex-is-now-sublime</id>
     <content type="html"><![CDATA[<p>Hi everyone!</p>
 
@@ -590,7 +599,7 @@ Be sure that the <em>Check for file changes</em> is unchecked, then select <em>S
   <entry>
     <title type="html"><![CDATA[Hello, World!]]></title>
     <link href="http://codepills.net/blog/2012/11/21/hello-world/"/>
-    <updated>2012-11-21T17:15:00+00:00</updated>
+    <updated>2012-11-21T17:15:00-06:00</updated>
     <id>http://codepills.net/blog/2012/11/21/hello-world</id>
     <content type="html"><![CDATA[<p><span class='pullquote-right' data-pullquote='This blog is meant as a resource where to find solutions to real life problems, mostly related to the programming world.'></p>
 

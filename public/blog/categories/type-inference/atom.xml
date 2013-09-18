@@ -4,7 +4,7 @@
   <title><![CDATA[Category: type-inference | Code Pills]]></title>
   <link href="http://codepills.net/blog/categories/type-inference/atom.xml" rel="self"/>
   <link href="http://codepills.net/"/>
-  <updated>2013-06-25T18:22:18+01:00</updated>
+  <updated>2013-09-18T10:51:19-05:00</updated>
   <id>http://codepills.net/</id>
   <author>
     <name><![CDATA[Gabriele Petronella]]></name>
@@ -16,7 +16,7 @@
   <entry>
     <title type="html"><![CDATA[Type inference for everyone in iOS 7! (yes, I'm breaking Apple's NDA)]]></title>
     <link href="http://codepills.net/blog/2013/06/25/type-inference-for-everyone-ios7/"/>
-    <updated>2013-06-25T15:23:00+01:00</updated>
+    <updated>2013-06-25T15:23:00-05:00</updated>
     <id>http://codepills.net/blog/2013/06/25/type-inference-for-everyone-ios7</id>
     <content type="html"><![CDATA[<h2>DISCLAIMER</h2>
 

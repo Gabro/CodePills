@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: auto-layout | Code Pills]]></title>
+  <link href="http://codepills.net/blog/categories/auto-layout/atom.xml" rel="self"/>
+  <link href="http://codepills.net/"/>
+  <updated>2013-09-18T10:51:19-05:00</updated>
+  <id>http://codepills.net/</id>
+  <author>
+    <name><![CDATA[Gabriele Petronella]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[My feelings about Auto Layout in Xcode 5]]></title>
+    <link href="http://codepills.net/blog/2013/09/18/my-feelings-about-auto-layout-in-xcode-5/"/>
+    <updated>2013-09-18T10:48:00-05:00</updated>
+    <id>http://codepills.net/blog/2013/09/18/my-feelings-about-auto-layout-in-xcode-5</id>
+    <content type="html"><![CDATA[<p><img src="http://f.cl.ly/items/3u0e443F3t0p2226322M/Just-When-I-Think-You-Couldnt-Possibly-Be-Any-Dumber-You-Go-and-Do-Something-Like-This..-and-Totally-Redeem-Yourself-In-Dumb-and-Dumber.gif"></p>
+]]></content>
+  </entry>
+  
+</feed>
