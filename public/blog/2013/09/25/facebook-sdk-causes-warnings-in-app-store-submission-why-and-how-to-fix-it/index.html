@@ -1,0 +1,276 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Facebook SDK may cause your app to be rejected from the App Store. - Code Pills</title>
+  <meta name="author" content="Gabriele Petronella">
+
+  
+  <meta name="description" content="Facebook SDK May Cause Your App to Be Rejected From the App Store. Sep 25th, 2013 Scenario You just finished coding the coolest app ever. A well- &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://codepills.net/blog/2013/09/25/facebook-sdk-causes-warnings-in-app-store-submission-why-and-how-to-fix-it/">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="/javascripts/ender.js"></script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <link href="/atom.xml" rel="alternate" title="Code Pills" type="application/atom+xml">
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-37142405-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+</head>
+
+<body >
+  <header role="banner" id="sidebar">
+    <!-- Logo -->
+<aside id="logo" class="clearfix">
+  <div class="clearfix">
+    <a href="/">Code Pills</a>
+  </div>
+</aside>
+
+<ul id="menu">
+
+  <li class="title">
+    <h1 id="title"><a href="/">Code Pills</a></h1>
+  </li>
+
+
+  <li class="subtitle">
+    <h2 id="subtitle">code pills from real life experience</h2>
+  </li>
+
+<!--   <li class="link">
+    <a href="/about/">about</a>
+  </li> -->
+
+  <li class="link">
+    <a href="http://twitter.com/Gabro27/" target="_blank">twitter</a>
+  </li>
+
+
+  <li class="link">
+    <a href="http://github.com/Gabro/" target="_blank">github</a>
+  </li>
+
+  <li class="link rss">
+    <a href="/atom.xml">rss feed</a>
+  </li>
+</ul>
+
+
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:codepills.net" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+
+
+<!-- Octopress Love -->
+<aside id="octopress_linkback">
+  <a href="http://octopress.org/">
+    <span class="unicode_square">
+      <span class="unicode_circle">
+        &nbsp;
+      </span>
+    </span>
+    <span class="octopress">Powered by Octopress</span>
+  </a>
+</aside>
+
+  </header>
+  <section id="main">
+    <article class="post">
+  
+  <header>
+    
+      <h2 class="entry-title">Facebook SDK May Cause Your App to Be Rejected From the App Store.</h2>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-09-25T14:51:00-05:00" pubdate data-updated="true">Sep 25<span>th</span>, 2013</time>
+        
+      </p>
+    
+  </header>
+
+
+<h2>Scenario</h2>
+
+<p>You just finished coding the coolest app ever. A well-deserved cold beer is awaiting for you. Archive&#8230; Validate&#8230;.</p>
+
+<p>Validation passed with warnings:</p>
+
+<blockquote><p>The app references non-public selector in id</p></blockquote>
+
+
+
+
+<!-- more -->
+
+
+<h2>Why?</h2>
+
+<p>Facebook SDK defines several protocols which define a property named <code>id</code>. Example</p>
+
+<figure class='code'><figcaption><span>FBGraphUser.h </span></figcaption>
+ <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='objc'><span class='line'><span class="k">@protocol</span> <span class="nc">FBGraphUser</span><span class="o">&lt;</span><span class="n">FBGraphObject</span><span class="o">&gt;</span>
+</span><span class='line'><span class="p">...</span>
+</span><span class='line'><span class="k">@property</span> <span class="p">(</span><span class="n">retain</span><span class="p">,</span> <span class="n">nonatomic</span><span class="p">)</span> <span class="n">NSString</span> <span class="o">*</span><span class="kt">id</span><span class="p">;</span>
+</span><span class='line'><span class="p">...</span>
+</span><span class='line'><span class="k">@end</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Needless to say, it&#8217;s a <em>poor design choice</em>&trade;.</p>
+
+<p>Any programmer with a minimal experience (and by minimal I mean any programmer who has ever made a fart app) easily recognizes this as a bad idea, since <code>id</code> is a keyword of the language (ok, I&#8217;m lying to keep things simple. <code>id</code> is just a predefined type, defined as a pointer to <code>struct objc_object</code>.)</p>
+
+<p>It&#8217;s no surprise then that Apple warns you whenever you do something like <em>user.id</em> and you submit it to the App Store.</p>
+
+<h2>How to fix it</h2>
+
+<p>Easily enough, in any case I&#8217;m aware of, the objects conforming to the aforementioned protocol the Facebook SDK uses are all <code>NSDictionary</code> instances.
+You can therefore access the <code>id</code> field using <code>objectForKey:</code> or the literal notation as follows.</p>
+
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='objc'><span class='line'><span class="n">NSString</span> <span class="o">*</span> <span class="n">userId</span> <span class="o">=</span> <span class="n">user</span><span class="p">[</span><span class="s">@&quot;id&quot;</span><span class="p">];</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>This fixes the warnings and it&#8217;s not too terrible syntactically-wise.</p>
+
+<h2>Which Facebook SDKs?</h2>
+
+<p>According to <a href="https://developers.facebook.com/bugs/143882255765923/">this bug report</a>, all versions &lt; 3.5.3 are affected.
+It appears to have been fixed in version 3.5.3, and then it reappeared from some 3.7.x version on. At the time of writing the latest version is 3.8 and the issue is still there.</p>
+
+<h2>Will my app be rejected out of this?</h2>
+
+<p>Apple review process is far away from being clear, but a non-public selector reference (even though is indeed a false positive) is very likely to trigger an automatic rejection of your app. So yes, it <strong>may</strong> be.</p>
+
+<h2>What should Facebook do?</h2>
+
+<p>Change the property name to <code>ID</code> or <code>userId</code> (<code>placeId</code>, <code>objectId</code>, whatever appropriate).</p>
+
+<h2>Why don&#8217;t they do it?</h2>
+
+<p>Because they are lazy.</p>
+
+
+
+  <div class="sharing-box">
+  
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://codepills.net/blog/2013/09/25/facebook-sdk-causes-warnings-in-app-store-submission-why-and-how-to-fix-it/" data-via="Gabro27" data-counturl="http://codepills.net/blog/2013/09/25/facebook-sdk-causes-warnings-in-app-store-submission-why-and-how-to-fix-it/" data-size="large">Tweet</a>
+  
+  
+  
+  <div class="fb-like" data-send="true" data-width="450" data-show-faces="false"></div>
+  
+</div>
+
+</article>
+
+  <section class="comments">
+    <h2>Comments</h2>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+  </section>
+
+
+    <nav role="navigation" id="pagination">
+
+</nav>
+  </section>
+  
+
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'codepills';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://codepills.net/blog/2013/09/25/facebook-sdk-causes-warnings-in-app-store-submission-why-and-how-to-fix-it/';
+        var disqus_url = 'http://codepills.net/blog/2013/09/25/facebook-sdk-causes-warnings-in-app-store-submission-why-and-how-to-fix-it/';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) {return;}
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/all.js#appId=212934732101925&xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+</body>
+</html>
