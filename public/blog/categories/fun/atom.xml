@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: fun | Code Pills]]></title>
+  <link href="http://codepills.net/blog/categories/fun/atom.xml" rel="self"/>
+  <link href="http://codepills.net/"/>
+  <updated>2014-02-26T10:14:15+01:00</updated>
+  <id>http://codepills.net/</id>
+  <author>
+    <name><![CDATA[Gabriele Petronella]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[xkcd now. Animated.]]></title>
+    <link href="http://codepills.net/blog/2014/02/26/xkcd-now-animated/"/>
+    <updated>2014-02-26T09:54:00+01:00</updated>
+    <id>http://codepills.net/blog/2014/02/26/xkcd-now-animated</id>
+    <content type="html"><![CDATA[<p><img src="http://cl.ly/image/2e0D390v3u2R/now-full.gif" title="" ></p>
+
+<p>Credits: <a href="http://xkcd.com/now">http://xkcd.com/now</a></p>
+]]></content>
+  </entry>
+  
+</feed>

@@ -4,7 +4,7 @@
   <title><![CDATA[Category: ios | Code Pills]]></title>
   <link href="http://codepills.net/blog/categories/ios/atom.xml" rel="self"/>
   <link href="http://codepills.net/"/>
-  <updated>2013-09-25T15:59:43-05:00</updated>
+  <updated>2014-02-26T10:14:15+01:00</updated>
   <id>http://codepills.net/</id>
   <author>
     <name><![CDATA[Gabriele Petronella]]></name>
@@ -16,7 +16,7 @@
   <entry>
     <title type="html"><![CDATA[My feelings about Auto Layout in Xcode 5]]></title>
     <link href="http://codepills.net/blog/2013/09/18/my-feelings-about-auto-layout-in-xcode-5/"/>
-    <updated>2013-09-18T10:48:00-05:00</updated>
+    <updated>2013-09-18T10:48:00+02:00</updated>
     <id>http://codepills.net/blog/2013/09/18/my-feelings-about-auto-layout-in-xcode-5</id>
     <content type="html"><![CDATA[<p><img src="http://f.cl.ly/items/3u0e443F3t0p2226322M/Just-When-I-Think-You-Couldnt-Possibly-Be-Any-Dumber-You-Go-and-Do-Something-Like-This..-and-Totally-Redeem-Yourself-In-Dumb-and-Dumber.gif"></p>
 ]]></content>
@@ -25,7 +25,7 @@
   <entry>
     <title type="html"><![CDATA[Type inference for everyone in iOS 7! (yes, I'm breaking Apple's NDA)]]></title>
     <link href="http://codepills.net/blog/2013/06/25/type-inference-for-everyone-ios7/"/>
-    <updated>2013-06-25T15:23:00-05:00</updated>
+    <updated>2013-06-25T15:23:00+02:00</updated>
     <id>http://codepills.net/blog/2013/06/25/type-inference-for-everyone-ios7</id>
     <content type="html"><![CDATA[<h2>DISCLAIMER</h2>
 
@@ -100,7 +100,7 @@ However, starting from iOS 7, the signature has changed into</p>
   <entry>
     <title type="html"><![CDATA[Type inference for everyone in iOS 7! (yes, I'm breaking Apple's NDA)]]></title>
     <link href="http://codepills.net/blog/2013/06/25/foundation-getting-modern/"/>
-    <updated>2013-06-25T15:23:00-05:00</updated>
+    <updated>2013-06-25T15:23:00+02:00</updated>
     <id>http://codepills.net/blog/2013/06/25/foundation-getting-modern</id>
     <content type="html"><![CDATA[<h2>DISCLAIMER</h2>
 
